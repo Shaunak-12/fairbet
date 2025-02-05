@@ -1,0 +1,3 @@
+<!-- <button type="button" class="btn btn-primary font7" style="margin-left: 1rem; float: right;" (click)="GetUserStatement()"><i-feather name="refresh-cw"></i-feather></button> -->
+<app-advance-table [DataLoader]="UserCollumnLoading" [miniLoader]='true' [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData"></app-advance-table>
+<app-advance-table-paginator [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="currentQuery.PageSize" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>

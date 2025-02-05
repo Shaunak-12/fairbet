@@ -1,0 +1,32 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Assign Lead'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)" ></app-advance-title-head-new>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <ng-container *ngIf="showListing && this.userData.RoleCode == 'SA'">
+    <div style="padding: 0rem 0.5rem 0.5rem 0.5rem">
+      <mat-form-field id="assignadminid" *ngIf="showassignButton" style="margin-left: 1rem;" appearance="outline">
+        <mat-select [(ngModel)]="assignadminid">
+          <mat-option value="0" selected="true">Select Assign</mat-option>
+          <mat-option *ngFor="let al of assignList" [value]="al.Id">{{al.FName +' '+ al.LName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="button" class="btn btn-primary font7" (click)="AssignToAdmin()" *ngIf="showassignButton" style="margin-left: 1rem;margin-right:1rem" [disabled]="assignDisabled||(assignadminid=='0')">Save <i *ngIf="assignDisabled" class="fa fa-spinner fa-spin"></i></button>
+      <button type="button" class="btn btn-primary font7" (click)="showassignButton=!showassignButton">{{showassignButton?'Cancel':'Assign'}}</button>
+      <!-- <button type="button" class="btn btn-primary font7" style="margin-left: 1rem; float: right;" (click)="AgentLogin()">Login</button> -->
+      <!-- <button type="button" class="btn btn-primary font7" style="margin-left: 1rem; float: right;" (click)="showLeadForm()">Add</button> -->
+    </div>
+  </ng-container>
+  <app-advance-table-paginator posn="top" [DataLoader]="apiLoader.crc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+  <app-advance-table [DataLoader]="apiLoader.crc_list" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="CallRequestinfoData" (onInputChange)="onValueChange($event)" (onHeaderInputChange)="onHeaderValueChange($event)"></app-advance-table>
+  <app-advance-table-paginator posn="bottom" [DataLoader]="apiLoader.crc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+</div>
+<ng-template #completelead>
+  <app-complete [userData]="udataToView" [userWal]="currentQuery.WalletTypeId" (onCancel)="onback()" (onSave)="save()"></app-complete>
+</ng-template>
+<ng-template #updateUser>
+  <app-update-user [userData]="udataToView" [userWal]="currentQuery.WalletTypeId" (onCancel)="onback()" (onSave)="save()"></app-update-user>
+</ng-template>
+<ng-template #callIng>
+  <app-calling-pop [userData]="udataToView" [userWal]="currentQuery.WalletTypeId" (onCancel)="onback()" (onSave)="save()"></app-calling-pop>
+</ng-template>
+<ng-template #confirm>
+  <app-send-confirm [userData]="udataToView" (onCancel)="onback2()" (onSave)="save()"></app-send-confirm>
+</ng-template>

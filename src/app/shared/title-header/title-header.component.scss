@@ -1,0 +1,89 @@
+.font7{
+    font-size: 0.9rem;
+    vertical-align: top;
+    margin-top: 0.45rem;
+    font-weight: 500;
+  }
+  
+  .mr-toprem{
+  // margin-top: 0.45rem;
+  margin-top: 0.85rem;
+
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    border-top: 0rem !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper{
+  margin-top: 0rem !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+    top: 0rem !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: 0 !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+    width: 1rem !important;
+    height: 1rem !important;
+    vertical-align: middle !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field{
+    line-height: 2rem;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem;
+  }
+  
+  .title-mat .mat-date-range-input-inner, ::ng-deep .mat-button,::ng-deep .mat-calendar,.title-mat .mat-option,.title-mat .mat-select,.title-mat .mat-input-element{
+    font-family: "BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  }
+  
+  .title-mat .mat-form-field{
+    font-size: 0.8rem;
+  }
+  .title-mat ::ng-deep .mat-date-range-input-mirror{
+    min-width: 5rem !important;
+  }
+  
+  .title-mat ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin-top: 0rem !important;
+  }
+  
+  .example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+  }
+  
+  .example-month-picker .mat-calendar-arrow {
+    display: none;
+  }
+  
+  .font-thead{
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+  
+  .font-subhead{
+    font-weight: bolder;
+    font-size: 1.1rem;
+  }
+  
+  i-feather{
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    stroke-width: 0.16rem;
+  }

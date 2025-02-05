@@ -1,0 +1,6 @@
+<div *ngIf="!DataLoader && rowCount.t>=1">            
+	<span *ngIf="pagesTotal!=1" class="d-flex text-white" style="width: 5rem;padding-left: 0.5rem;padding-right: 0.5rem;line-height: 1rem;">
+		<div class="p-2 bg-primary {{pageNo != 1? 'pagerBlock':'pagerBlockDisabled'}}" style="border-radius: 0.25rem;border: none;" (click)="pnPressed(1)"><</div>
+		<div class="p-2 bg-primary {{pageNo != pagesTotal? 'pagerBlock':'pagerBlockDisabled'}}" style="border-radius: 0.25rem;border: none;margin-left: 0.25rem;" (click)="pnPressed(2)">></div>
+	</span>
+</div>

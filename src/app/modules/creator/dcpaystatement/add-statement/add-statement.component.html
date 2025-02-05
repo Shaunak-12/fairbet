@@ -1,0 +1,62 @@
+<div class="popupCard">
+    <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    <div class="popupHead">
+        <span> Add New Statement </span>
+    </div>
+    <form [formGroup]="statementForm"  (ngSubmit)="onSubmit()">
+        <div class="row admin-add">
+            <div class="col-sm-6">
+                <mat-label>Page</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select [formControl]="PageSelected">
+                        <ng-container *ngFor="let element of PageList">
+                            <mat-option [value]="element">{{element}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error *ngIf="PageSelected.hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Reel</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select formControlName="DCPromotionId">
+                        <ng-container *ngFor="let element of FilteredReels">
+                            <mat-option [value]="element.Id">{{element.PromoURL}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error *ngIf="statementForm.controls['DCPromotionId'].hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input type="number" matInput formControlName="Amount">
+                    <mat-error *ngIf="statementForm.controls['Amount'].hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>ReferenceId</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="ReferenceId">
+                    <mat-error *ngIf="statementForm.controls['ReferenceId'].hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Description</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="Description">
+                    <mat-error *ngIf="statementForm.controls['Description'].hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <!-- DCPromotionId: ["", [Validators.required]],
+                Amount: ["", [Validators.required]],
+                ReferenceId: ["", [Validators.required]],
+                Description: ["", [Validators.required]],
+                Type: ["Admin", [Validators.required]] -->
+            </div>
+            <div style="text-align: center;">
+                <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+                <button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+            </div>
+        </form>
+    </div>

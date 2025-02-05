@@ -1,0 +1,13 @@
+<span (click)="switchSelect()" *ngIf="!opVisible">{{valSelect}}&nbsp;&nbsp;<i-feather name="edit" class="sclass"></i-feather></span>
+<span *ngIf="opVisible">
+  <mat-form-field class="edit-drop" style="width:100%;margin-bottom: 0.5rem;" appearance="outline">
+    <mat-select  [disabled]="saveLoader" [formControl]="userVal">
+      <mat-option *ngFor="let list of inputArray" [value]="list[searchKey]">{{list[returnKey]}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div style="text-align: center;">
+    <span class="p-null"><button type="button" class="btn btn-primary" (click)="saveSelect()" [disabled]="saveLoader"><i-feather name="save"></i-feather><i *ngIf="saveLoader" class="fa fa-sync fa-spin" style="margin-left: 0.25rem;"></i></button></span>
+    &nbsp;&nbsp;
+    <span class="p-null"><button type="button" class="btn btn-primary" (click)="switchSelect()" [disabled]="saveLoader"><i-feather name="rotate-ccw"></i-feather></button></span>
+  </div>
+</span>

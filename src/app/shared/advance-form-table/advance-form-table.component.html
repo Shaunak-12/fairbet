@@ -1,0 +1,142 @@
+<ng-container *ngIf="!DataLoader">
+    <div class="card" style="margin-bottom: 0rem;overflow-x: auto;">
+      <form [formGroup]="generatedForm">
+        <table>
+          <thead>
+            <ng-container *ngFor="let TCR of TableCollumnData; index as rowIndex">
+              <tr>
+                <ng-container *ngFor="let TCD of TCR; index as rowHeadIndex">
+                  <ng-container *ngIf="TCD.colspan;else normalSpan">
+                    <th class="{{TCD.bg}}" [attr.colspan]="TCD.colspan" >{{TCD.value}}</th>
+                  </ng-container>
+                  <ng-template #normalSpan>
+                    <ng-container *ngIf="TCD.icon;else noIcon">
+                      <ng-container *ngIf="TCD.icon=='Download'">
+                        <th class="{{TCD.bg}}">
+                          <i class="fa fa-download" (click)="buttonHeaderPressed(rowIndex,rowHeadIndex,TCD.downloadvalue)" title="Click to Download"></i>&nbsp;{{TCD.value}}
+                        </th>
+                      </ng-container>
+                      <ng-container *ngIf="TCD.icon=='Checkbox'">
+                        <th class="{{TCD.bg}} scaleCheck">
+                          <mat-checkbox [(ngModel)]="TCD.value" style="margin-top: 0.25rem;" title="Click to Check all" (change)="checkHeaderChanged(rowIndex,rowHeadIndex,$event.checked)"></mat-checkbox>
+                        </th>
+                      </ng-container>
+                      <ng-container *ngIf="TCD.icon=='Loading'">
+                        <th class="{{TCD.bg}}"><i class="fa fa-sync fa-spin"></i>&nbsp;{{TCD.value}}</th>
+                      </ng-container>
+                    </ng-container>
+                    <ng-template #noIcon>
+                      <th class="{{TCD.bg}}">{{TCD.value}}</th>
+                    </ng-template>
+                  </ng-template>
+                </ng-container>
+              </tr>
+            </ng-container>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="showForm">
+              <tr class="mat-row">
+                <ng-container *ngFor="let dControls of dynamicForm;let count = index;">
+                  <td class="mat-cell white-cell">
+                    <ng-container *ngIf="dControls.type=='cell'">{{dControls.label}}</ng-container>
+                    <ng-container *ngIf="dControls.type=='button'">
+                      <button type="button" class="btn btn-primary" [disabled]="dControls.icon=='Loading'" (click)="FormButtonPressed(count,'FormAdd')">{{dControls.label}}
+                        <ng-container *ngIf="dControls.icon=='Loading'">&nbsp;<i class="fa fa-sync fa-spin"></i></ng-container>
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="dControls.type=='select'">
+                      <mat-form-field appearance="outline">
+                        <mat-select [formControlName]="'C'+count" placeholder="{{dControls.placeholder}}">
+                          <mat-option *ngIf="dControls.default" [value]='dControls.default.value'>{{dControls.default.name}}</mat-option>
+                          <ng-container *ngIf="dControls.options">
+                            <ng-container *ngFor="let options of dControls.options">
+                              <mat-option [value]='options.value'>{{options.name}}</mat-option>
+                            </ng-container>
+                          </ng-container>
+                        </mat-select>
+                      </mat-form-field>
+                    </ng-container>
+                    <ng-container *ngIf="dControls.type=='text'">
+                      <mat-form-field appearance="outline">
+                        <input matInput [formControlName]="'C'+count">
+                      </mat-form-field>
+                    </ng-container>
+                    <ng-container *ngIf="dControls.type=='textarea'">
+                      <div class="form-cell">
+                        <mat-form-field appearance="outline">
+                          <textarea matInput [formControlName]="'C'+count" placeholder="{{dControls.placeholder}}"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="dControls.type=='date'">
+                      <ng-container *ngIf="((dControls.dependent && dControls.dependent=='Status') && generatedForm.controls['C3'].value=='2')">
+                        <mat-form-field appearance="outline">
+                          <input matInput [formControlName]="'C'+count" readonly [matDatepicker]="picker" placeholder="Select Date">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </ng-container>
+                    </ng-container>
+                  </td>
+                </ng-container>
+              </tr>
+            </ng-container>
+            <ng-container *ngFor="let TD of TableData; index as rowIndex">
+              <tr class="mat-row">
+                <ng-container *ngFor="let KV of TD; index as cellIndex">
+                  <ng-container *ngIf="!KV.icon;else ActiveCell">
+                    <td class="mat-cell {{KV.bg}}">
+                      {{KV.value}}
+                      <span *ngIf="KV.sufText" style="color: #666;font-weight: lighter;font-size: 0.6rem;"><br>{{KV.sufText}}</span>
+                      <ng-container *ngIf="KV.sufTextArr">
+                        <br>
+                        <ng-container *ngFor="let stA of KV.sufTextArr">
+                          <span style="color: #666;font-weight: lighter;font-size: 0.6rem;">{{stA}}</span>
+                        </ng-container>
+                      </ng-container>
+                    </td>
+                  </ng-container>
+                  <ng-template #ActiveCell>
+                    <td class="mat-cell {{KV.bg}} fonthover" *ngIf="KV.icon">
+                      <ng-container *ngIf="KV.icon=='View'">
+                        <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'View')" class="btn btn-primary"><i-feather name="eye"></i-feather></button>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Add'">
+                        <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'Add')" type="button" class="btn btn-primary font7">Add {{KV.value}}</button>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Download'">
+                        <i class="fa fa-download" (click)="buttonPressed(rowIndex,cellIndex,KV.downloadvalue)" title="Click to Download"></i>
+                        &nbsp;{{KV.value}}
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Delete'">
+                        <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'Delete')" class="deleteBtn" mat-raised-button color="warn"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Toggle'">
+                        <mat-slide-toggle [checked]="(KV.value == 1)||(KV.value == true) ? true : false" (change)="setToggleChange(rowIndex,cellIndex,$event)"></mat-slide-toggle>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Checkbox'">
+                        <div class="scaleCheck">
+                          <mat-checkbox [(ngModel)]="KV.value" color="primary" style="margin-top: 0.25rem;" (change)="setCheckChange(rowIndex,cellIndex,$event.checked)"></mat-checkbox>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='None'">
+                        <button type="button" class="btn btn-primary font7" (click)="buttonPressed(rowIndex,cellIndex,'Action')" style="font-size: 0.75rem;font-weight: 500;">{{KV.value}}</button>
+                      </ng-container>
+                      <ng-container *ngIf="KV.icon=='Loading'">
+                        <i class="fa fa-sync fa-spin"></i>
+                        &nbsp;{{KV.value}}
+                      </ng-container>
+                    </td>
+                  </ng-template>
+                </ng-container>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="DataLoader">
+    <mat-spinner style="left: 40%;margin: 3rem;"></mat-spinner>
+  </ng-container>    

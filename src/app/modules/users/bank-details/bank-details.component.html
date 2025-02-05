@@ -1,0 +1,11 @@
+<div class="container">
+
+<h5 style="text-align: center;">Bank Detail of <span style="font-weight: bold;">{{userData.FName}}&nbsp; ({{userData.UserName}}) &nbsp;<a class="col" style="cursor: pointer;" (click)="copytoclipboard()"><i-feather name="copy"></i-feather></a></span></h5>
+<app-advance-table [TableCollumnData]="BankDataCollumns" [TableData]="BankDataRows"></app-advance-table>
+<div class="row" style="text-align: center;">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <button type="button" class="btn btn-primary font7"  mat-dialog-close (click)="onBack()">Close</button>
+    </div>
+</div>
+</div>

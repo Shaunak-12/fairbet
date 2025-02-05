@@ -1,0 +1,22 @@
+<!-- <section class="content">
+    <div class="container-fluid" style="text-align: right;">
+        <ng-container *ngFor="let btnval of btnData">
+            <button type="button" [disabled]="btnval.disabled" (click)="buttonPressed(btnval.value)" class="btn btn-primary">{{btnval.name}}</button>
+        </ng-container>
+    </div>
+</section> -->
+
+<div class="container-fluid">
+    <div class="{{classes}}" style="padding: 10px">
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <h4>{{titleText}}</h4>
+            </div>
+            <div class="col-sm-8" style="text-align: right;">
+                <ng-container *ngFor="let btnval of btnData">
+                    <button type="button" [disabled]="btnval.disabled" (click)="buttonPressed(btnval.value)" class="btn btn-primary">{{btnval.name}}</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

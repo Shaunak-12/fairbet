@@ -1,0 +1,11 @@
+<div class="container">
+<div class="popupCard"></div>
+<div class="popupHead">
+        <span > {{userData.FName}} {{userData.LName}} Promotions</span>
+        <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    </div>
+    <div class="odwform">
+        <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserpromoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+        <!-- <app-advance-table-paginator posn="bottom" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator> -->
+</div>
+</div>

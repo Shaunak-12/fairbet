@@ -1,0 +1,39 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span> Add Level </span>
+	</div>
+	<form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
+		<div class="row admin-add">
+			<div class="col-sm-6">
+				<mat-label>Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Name">
+					<mat-error *ngIf="addForm.controls['Name'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Level Number</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="LevelNumber" type="number">
+					<mat-error *ngIf="addForm.controls['LevelNumber'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-sm-6">
+                <mat-label>Wallet</mat-label>
+            <mat-form-field style="width: 100%;" appearance="outline">
+				<mat-select formControlName="WalletTypeId">
+					<ng-container *ngFor="let option of userWals">
+						<mat-option [value]="option.Id">{{option.Code}}</mat-option>
+					</ng-container>
+				</mat-select>
+			</mat-form-field>
+            </div>
+		</div>
+		<div style="text-align: center;">
+			<div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div>
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

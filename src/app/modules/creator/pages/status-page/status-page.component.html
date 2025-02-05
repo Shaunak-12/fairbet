@@ -1,0 +1,22 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span >{{pageData.StatusId==1?'Block':'Activate'}} The Page <span style="font-weight: bold;"> {{pageData.DCPageName}} ( {{pageData.Name}} )</span> </span>
+	</div>
+	<div class="odwform">
+		<form [formGroup]="pagestatusForm" (ngSubmit)="onSubmit()">
+			<div *ngIf="pageData.StatusId==1" class="row">
+				<div class="col-sm-12">
+					<mat-label>Remarks</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<textarea matInput formControlName="Description"></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div style="text-align: center;">
+				<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled">{{pageData.StatusId==1?'Block':'Activate'}} <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+				<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close>Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

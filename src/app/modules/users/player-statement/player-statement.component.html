@@ -1,0 +1,11 @@
+<div class="smallicon" *ngIf="AllUserinfo[0]" style="padding:0rem 0.5rem 0rem 0.5rem;display: flex;">
+    <button type="button" class="btn btn-primary" style="margin-left: auto;" (click)="DownloadDepositWithdrawalData()" [disabled]="apiLoader.psc_eDAW"> P & L <i *ngIf="apiLoader.psc_eDAW" class="fa fa-sync fa-spin"></i> </button>&nbsp;
+    <!-- <ng-container *ngFor="let sBtn of btnTotal">
+		<button type="button" class="btn btn-primary" (click)="DownloadStatementData(sBtn)" [disabled]="apiLoader.psc_eStatement"> {{50 * (sBtn+1)}} K <i *ngIf="apiLoader.psc_eStatement && sBtn == dIndex.psc_eS_col" class="fa fa-sync fa-spin"></i> </button>&nbsp;
+	</ng-container> -->
+    <button type="button" class="btn btn-primary" (click)="DownloadStatementData(2)" [disabled]="apiLoader.psc_eStatement"> <i-feather name="download"></i-feather> <i *ngIf="apiLoader.psc_eStatement" class="fa fa-sync fa-spin"></i> </button>&nbsp;
+    <button type="button" class="sclass btn btn-primary" (click)="GetUserStatement(currentWal)"><i-feather name="refresh-cw"></i-feather></button>
+</div>
+<app-advance-table-paginator  posn="top" [DataLoader]="apiLoader.psc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+<app-advance-table [DataLoader]="apiLoader.psc_list" [miniLoader]='true' [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData"></app-advance-table>
+<app-advance-table-paginator [DataLoader]="apiLoader.psc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>

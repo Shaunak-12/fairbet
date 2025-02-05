@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -16,7 +17,21 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "paths": {
+      "path": ["../node_modules/path-browserify"],
+      "os": ["../node_modules/os-browserify/browser"],
+      "fs": ["../node_modules/fs-web"],
+      "@components/*": ["app/components/*"],
+      "@guards/*": ["app/guards/*"],
+      "@auth/*": ["app/auth/*"],
+      "@pages/*": ["app/pages/*"],
+      "@common/*": ["app/common/*"],
+      "@modules/*": ["app/modules/*"],
+      "@services/*": ["app/services/*"],
+      "@shared/*": ["app/shared/*"],
+      "@/*": ["app/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

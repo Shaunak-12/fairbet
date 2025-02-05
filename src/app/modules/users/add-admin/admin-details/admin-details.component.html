@@ -1,0 +1,64 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Admin Details'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+<div class="row">
+    <!-- <mat-spinner *ngIf="!BasicDetail.Id" style="margin:12rem auto;"></mat-spinner> -->
+    <div class="col-sm-3" *ngIf="BasicDetail.Id">
+      <div class="card" style="padding: 10px;margin: 10px;">
+        <img class="img-responsive mx-auto" style="width: 5rem;height: 5rem; border-radius: 50%;border: 2px solid #ddd;padding: 0.25rem;margin: 0.5rem;" src="../../../../assets/img/user.png" alt="User profile picture">
+        <div style="text-align: center;">
+          <h5>{{BasicDetail.FName}} {{BasicDetail.LName}}</h5>
+          <!-- <span>(<ng-container *ngFor="let item of this.BasicDetail.Wallets; index as i"><ng-container *ngIf="item.NextLevelName">{{item.CurrencyType}} - {{item.NextLevelName}}</ng-container></ng-container>) </span><br> -->
+          <!-- <span>{{BasicDetail.UserName}}</span> -->
+        </div>
+        <br>
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item crdmid">
+            <b>Id</b> <a class="float-right">{{BasicDetail.Id}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Gender</b> <a class="float-right">{{BasicDetail.Gender}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Mobile</b> <a class="float-right">{{BasicDetail.Mobile}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Email</b> <a class="float-right">{{BasicDetail.Email}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Total Deposit</b> <a class="float-right">{{BasicDetail.TotalDeposit}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Total Withdrawal</b> <a class="float-right">{{BasicDetail.TotalWithdrawal}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Total Profit</b> <a class="float-right">{{BasicDetail.TotalProfit}}</a>
+          </li>
+
+         
+          <!-- <li class="list-group-item" *ngIf="BasicDetail.UniqueId">
+            <b style="font-size: 0.74rem;">{{BasicDetail.UniqueId}}</b> <a class="float-right" style="cursor: pointer;" (click)="copytoclipboard(BasicDetail.UniqueId)"><i-feather name="copy"></i-feather></a>
+          </li> -->
+          <!-- <li class="list-group-item" *ngIf="BasicDetail.Description">
+            <b>Block Reason : {{BasicDetail.Description}}</b>
+          </li> -->
+        </ul>
+        <!-- <span style="text-align: center;margin-top: 0.8rem;">
+          <button type="button" class="btn btn-primary font8" (click)="BlockToggle()"> {{BasicDetail.StatusId==1?'Block':'Activate'}} </button>&nbsp;
+        </span> -->
+      </div>
+    </div>
+    <div class="col-sm-9" >
+      
+      
+      <div class="smallicon" style="padding:10px 0.5rem 0rem 0.5rem;display: flex;">
+        <!-- <ng-container *ngFor="let walData of walList"> -->
+          <!-- <div class="{{walData.WalletTypeId != selectedPlayerWal? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="setPlayerWal(walData.WalletTypeId)">{{walData.WalletCode}}</div> -->
+        <!-- </ng-container> -->
+      </div>
+      <div class="card" style="padding: 10px;margin: 10px;">
+        <app-advance-table-paginator posn="top" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+        <app-advance-table [DataLoader]="addadminloader.loader" [TableCollumnData]="AdminDataCollumns" [TableData]="AdmininfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+        <app-advance-table-paginator posn="bottom" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+      </div>
+    </div>
+  </div>
+ 

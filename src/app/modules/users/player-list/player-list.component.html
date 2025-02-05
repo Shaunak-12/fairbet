@@ -1,0 +1,14 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Players'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <app-advance-table-paginator posn="top" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+  <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+  <app-advance-table-paginator posn="bottom" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+</div>
+
+<ng-template #viewConversation>
+  <app-conversation [uWalId]="currentQuery.WalletTypeId" [userId]="userId" (onCancel)="back()"></app-conversation>
+</ng-template>
+
+<ng-template #viewPromo>
+  <app-user-promotion [uWalId]="currentQuery.WalletTypeId" [userData]="userRow" (onCancel)="back()"></app-user-promotion>
+</ng-template>

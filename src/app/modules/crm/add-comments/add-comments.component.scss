@@ -1,0 +1,252 @@
+.font7 {
+    font-size: 0.9rem;
+    vertical-align: top;
+    margin-top: 0.45rem;
+    font-weight: 500;
+  }
+  
+  .mbutton {
+    margin: 0.5rem;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0rem !important;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: 1.25rem !important;
+    padding-bottom: 0rem !important;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field {
+    line-height: 2rem;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-wrapper {
+    margin-bottom: 0rem;
+  }
+  
+  .admin-add .mat-form-field {
+    font-size: 0.8rem;
+  }
+  
+  .admin-add ::ng-deep .mat-date-range-input-mirror {
+    min-width: 5rem !important;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top: 0rem !important;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0% !important;
+  }
+  
+  .admin-add ::ng-deep .mat-form-field-infix {
+    border-top: 0rem !important;
+  }
+  
+  .popupCard {
+    position: relative;
+    padding: 1rem 1rem 0 1rem;
+  }
+  
+  .popupClose {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    cursor: pointer;
+  }
+  
+  .popupClose i {
+    color: rgba(0, 0, 0, .7);
+  }
+  
+  .popupHead {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #bbb;
+  }
+  
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  .message {
+    float: right;
+    text-align: end !important;
+    padding-right: 1rem;
+  }
+  
+  .formDe {
+    background-color: #eff1f4;
+    display: flex;
+    width: 100%;
+  
+    textarea {
+      width: 90%;
+    }
+  }
+  
+  .msg {
+    background-color: #d9fdd2;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 10px;
+    border-radius: 10px 0px 10px 10px;
+    // text-align: left;
+  }
+  
+  .popupbody {
+    // min-height: 300px;
+    // max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 1rem
+    
+  }
+  .comments-side{
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+  
+  }
+  .nameProfile {
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    text-align: center;
+  }
+  .nameProfile1 {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    text-align: center;
+  }
+  
+  .name {
+    display: none;
+  }
+  
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    // background-color: #007bff;
+    color: #53646e;
+    border-radius: 5px;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #eff1f4;
+  }
+  
+  #file-input {
+    display: none;
+  }
+  
+  .userName {
+    font-size: 0.8rem;
+  }
+  
+  .msg-background {
+    margin-left: 1rem;
+    background-color: #ddd;
+    border-radius: 0 10px 10px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .message-box {
+    position: relative;
+  
+  }
+  
+  .message-box::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -19px;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #ddd;
+  }
+  
+  .message-own {
+    position: relative;
+    padding-top: 0.4rem;
+  }
+  .message-img {
+    position: relative;
+    background-color: #d9fdd2;
+    width: 100%;
+    border-radius: 10px 0 10px 10px;
+    
+  }
+  
+  .message-own::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -19px;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #d9fdd2;
+  
+  }
+  
+  .img-own::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -19px;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #d9fdd2;
+  
+  }
+  
+  .text-description {
+    padding-left: 12px;
+    padding-top: 7px;
+    border-radius: 1rem;
+    margin: 5px 0;
+    border: none;
+  }
+  .status-cls{
+    background-color: #57d1e0;
+  }
+  .pending-cls{
+    min-height: 600px;
+    max-height: 600px;
+    overflow-y: auto;
+    // padding: 0 1rem;
+    // background-color: #53646e;
+  
+    // overflow-x: hidden;
+    // height: 100%;
+    // border: 1px solid #ccc;
+  }
+  
+  ::ng-deep .screen-dialog{
+    width: 60% !important;
+  }
+  
+  .issue-det{
+    font-size: 0.8rem;
+  }
+  .img-own{
+    border-radius: 10px 0px 10px 10px;
+    // float: inline-end;
+  }
+  

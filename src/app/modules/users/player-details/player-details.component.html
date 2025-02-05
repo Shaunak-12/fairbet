@@ -1,0 +1,145 @@
+<div class="row">
+    <mat-spinner *ngIf="!BasicDetail.Id" style="margin:12rem auto;"></mat-spinner>
+    <div class="col-sm-3"*ngIf="BasicDetail.Id">
+      <div class="card" style="padding: 10px;margin: 10px;">
+        <img class="img-responsive mx-auto" style="width: 5rem;height: 5rem; border-radius: 50%;border: 2px solid #ddd;padding: 0.25rem;margin: 0.5rem;" src="../../../../assets/img/user.png" alt="User profile picture">
+        <div style="text-align: center;">
+          <h5>{{BasicDetail.FName}} {{BasicDetail.LName}}</h5>
+          <span>(<ng-container *ngFor="let item of this.BasicDetail.Wallets; index as i"><ng-container *ngIf="item.NextLevelName">{{item.CurrencyType}} - {{item.NextLevelName}}</ng-container></ng-container>) </span><br>
+          <span>{{BasicDetail.UserName}}</span>
+        </div>
+        <br>
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item crdmid">
+            <b>Id</b> <a class="float-right">{{BasicDetail.Id}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Player Age</b> <a class="float-right">{{BasicDetail.Wallets[0].PlayerAge}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Mobile</b> <a class="float-right">{{BasicDetail.Mobile}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Status</b> <a class="float-right">{{BasicDetail.StatusId==1?'Active':'Inactive'}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>DOB</b> <a class="float-right">{{BasicDetail.DOB | date: 'MMM d, y'}}</a>
+          </li>
+          <ng-container *ngFor="let playerWals of BasicDetail.Wallets">
+            <li class="list-group-item crdmid">
+              <b>{{playerWals.WalletName}} {{playerWals.WalletCode}}</b> <a class="float-right">{{playerWals.CurrencyType}} {{ playerWals.AccountBalance }}</a>
+            </li>
+          </ng-container>
+          <li class="list-group-item crdmid">
+            <b>Last Login</b> <a class="float-right">{{BasicDetail.LastLogin | date: 'h:mm:ss a d MMM yyyy'}}</a>
+          </li>
+          <li class="list-group-item crdmid">
+            <b>Join</b> <a class="float-right">{{BasicDetail.CreatedDate | date: 'h:mm:ss a d MMM yyyy'}}</a>
+          </li>
+          <li class="list-group-item" *ngIf="BasicDetail.UniqueId">
+            <b style="font-size: 0.74rem;">{{BasicDetail.UniqueId}}</b> <a class="float-right" style="cursor: pointer;" (click)="copytoclipboard(BasicDetail.UniqueId)"><i-feather name="copy"></i-feather></a>
+          </li>
+          <li class="list-group-item" *ngIf="BasicDetail.Description">
+            <b>Block Reason : {{BasicDetail.Description}}</b>
+          </li>
+        </ul>
+        <span style="text-align: center;margin-top: 0.8rem;">
+          <button type="button" class="btn btn-primary font8" (click)="BlockToggle()"> {{BasicDetail.StatusId==1?'Block':'Activate'}} </button>&nbsp;
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-9" *ngIf="BasicDetail.Id">
+      
+      
+      <div class="smallicon" style="padding:10px 0.5rem 0rem 0.5rem;display: flex;">
+        <ng-container *ngFor="let walData of walList">
+          <!-- <div class="{{walData.WalletTypeId != selectedPlayerWal? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="setPlayerWal(walData.WalletTypeId)">{{walData.WalletCode}}</div> -->
+          <div class="{{walData['WalletTypeId'] != selectedPlayerWal ? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="setPlayerWal(walData['WalletTypeId'])">{{walData['WalletCode']}}</div>
+
+        </ng-container>
+      </div>
+      <div class="card" *ngIf="walSelected" style="padding: 10px;margin: 10px;">
+        <mat-tab-group>
+          <mat-tab label="Wallets">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                All Wallets
+              </div>
+              <!-- <ng-container *ngFor="let walData of walList">
+                <span style="margin-left: 1rem;">
+                  {{walData.WalletCode}} Unique Id :<span style="font-weight: bold;"> {{walData.WalletUniqueId}} <i-feather name="copy" style="color: #1c84ee;" (click)="copytoclipboard(walData.WalletUniqueId)" class="copyIcon"></i-feather> </span>
+                </span>
+                <br>
+              </ng-container> -->
+              <app-dyna-table [DataLoader]="!BasicDetail.Id" [miniLoader]='true' [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="walTable" (onInputChange)="onValueChange($event)"></app-dyna-table>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Deposit">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-deposit #playDepo [uWalId]="selectedPlayerWal" [userId]="userId"></app-player-deposit>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Statement">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-statement #playStat [uWalId]="selectedPlayerWal" [userId]="userId"></app-player-statement>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Withdraw">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-withdraw [uWalId]="selectedPlayerWal" #playWith [userId]="userId"></app-player-withdraw>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Game played">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-game-played [uWalId]="selectedPlayerWal" #playGam [userId]="userId"></app-player-game-played>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Call Log">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-call-log [uWalId]="selectedPlayerWal" #playCall [userId]="userId"></app-player-call-log>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Online Deposit">
+            <ng-template matTabContent>
+              <div class="walTitle">
+                {{walObj.WalletName}} <span style="font-weight: normal;"> {{walObj.WalletCode}} </span> <span style="font-weight: normal;color: goldenrod;"> {{walObj.CurrencyType}} </span>
+              </div>
+              <app-player-online-deposit [uWalId]="selectedPlayerWal" #playOnDepo [userId]="userId"></app-player-online-deposit>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Conversation">
+            <ng-template matTabContent>
+              <div class="player-issue">
+                <app-player-details-issue [userId]="userId"></app-player-details-issue>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+  <ng-template #DepositWithdrawPopUp>
+    <app-online-deposit-withdraw (onSave)="onSavePopup()" [isCredit]="isCredit" [hasIMPS]="hasDepositAccess" [walId]="walId" (onCancel)="closePopup()" [userData]="BasicDetail"></app-online-deposit-withdraw>
+  </ng-template>
+  
+  <ng-template #BlockUserPopUp>
+    <app-block-user (onSave)="onSavePopup()" [userData]="BasicDetail" (onCancel)="closePopup()"></app-block-user>
+  </ng-template>
+  <ng-template #editRollAmount>
+    <app-edit-rolloveramount (onSave)="onSavePopup()" [userData]="BasicDetail" (onCancel)="closePopup()" [walId]="walId" [rowDataIn]="rowData"></app-edit-rolloveramount>
+  </ng-template>

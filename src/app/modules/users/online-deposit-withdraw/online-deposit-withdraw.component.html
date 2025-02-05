@@ -1,0 +1,82 @@
+
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span>Update Account of <span style="font-weight: bold;">{{userData.FName}} ( {{userData.UserName}} )</span> </span>
+	</div>
+	<div class="odwform">
+		<form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+			<div class="row">
+				<div *ngIf="isCredit" class="col-sm-6">
+					<mat-label>Mode</mat-label>
+					<br>
+					<div class="rMat">
+						<mat-radio-group formControlName="BonusCheck">
+							<ng-container *ngIf="hasIMPS==1">
+								<mat-radio-button style="margin-left: 0.5rem;" [value]="false">IMPS</mat-radio-button>
+							</ng-container>
+							<mat-radio-button style="margin-left: 1rem;" [value]="true">Bonus</mat-radio-button>
+						</mat-radio-group>
+					</div>
+				</div>
+				<div *ngIf="!modeBonus" class="col-sm-6">
+					<mat-label>Amount</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<input matInput type="number" min="0" formControlName="TransactionAmount">
+					</mat-form-field>
+				</div>
+				<div *ngIf="!modeBonus" class="col-sm-6">
+					<mat-label>Reference ID</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<input matInput formControlName="TransactionId" placeholder="S72524205">
+					</mat-form-field>
+				</div>
+				<div *ngIf="modeBonus" class="col-sm-6">
+					<mat-label>Bonus Type</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<mat-select formControlName="BonusCondition">
+							<mat-option value="">Select Bonus Type</mat-option>
+							<mat-option value="1">Deposit Bonus</mat-option>
+							<mat-option value="2">Non - Deposit Bonus</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div *ngIf="modeBonus && adminForm.controls['BonusCondition'].value!=''" class="col-sm-6">
+					<mat-label *ngIf="adminForm.controls['BonusCondition'].value==1">Deposited Amount</mat-label>
+					<mat-label *ngIf="adminForm.controls['BonusCondition'].value==2">Bonus Amount</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<input matInput type="number" min="0" formControlName="BonusAmount">
+					</mat-form-field>
+				</div>
+				<div *ngIf="modeBonus && adminForm.controls['BonusCondition'].value==1" class="col-sm-6">
+					<mat-label>% Bonus</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<input matInput type="number" min="0" [formControl]="PercentBonus">
+					</mat-form-field>
+				</div>
+				<div *ngIf="modeBonus && adminForm.controls['BonusCondition'].value!=''" class="col-sm-6">
+					<mat-label>Wagering</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<input matInput type="number" min="0" formControlName="BonusConditionValue" placeholder="1, 2, 3">
+					</mat-form-field>
+				</div>
+				<div class="col-sm-12">
+					<mat-label>Description</mat-label>
+					<mat-form-field style="width: 100%;" appearance="outline">
+						<textarea matInput formControlName="Description"></textarea>
+					</mat-form-field>
+				</div>
+				<div class="col-md-12">
+					<strong *ngIf="modeBonus && adminForm.controls['BonusCondition'].value!=''"> Total Deposit : {{totalDeposit.display}} </strong>
+                    <br>
+                    <strong *ngIf="modeBonus && adminForm.controls['BonusCondition'].value!=''"> Wagering Amount : {{wageringAmount.display}} </strong>
+                </div>
+			</div>
+			<div style="text-align: center;">
+				<div *ngIf="trxMsg" class="font7" style="margin: 1rem;">{{trxMsg}}</div>
+				<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled">{{isCredit?'Credit Amount':'Debit Amount'}} <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+				<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close>Cancel</button>
+			</div>
+		</form>
+	</div>
+</div>

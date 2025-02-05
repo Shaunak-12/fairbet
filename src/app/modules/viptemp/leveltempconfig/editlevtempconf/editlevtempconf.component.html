@@ -1,0 +1,112 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span>Edit Level Template Config</span>
+	</div>
+	<form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
+		Wallet :
+		<ng-container *ngFor="let option of userWals">
+			<span *ngIf="option.Id==levtempData.WalletTypeId">{{option.Code}}</span>
+		</ng-container>
+<span style="margin-left: 2rem;">Level : {{levtempData.LevelName}}</span>
+<span style="margin-left: 2rem;">Template : {{levtempData.TemplateName}}</span>
+<br><br>
+		<div class="row admin-add">
+			<div class="col-sm-2">
+				<mat-label>Deposit Reqd.</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DepositAmtCriteria">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-2">
+				<mat-label>Upgrade Bet Reqd.</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="BetAmtCriteria">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-2">
+				<mat-label>Upgrade Bonus</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="UpgradeReward">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-2">
+				<mat-label>Daily Bonus</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DailyReward">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-2">
+				<mat-label>Weekly Bonus</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="WeeklyReward">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-2">
+				<mat-label>Monthly Bonus</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="MonthlyReward">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Day Freq.</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DayFreq">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Week Freq.</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="WeekFreq">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Month Freq.</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="MonthFreq">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Bet Turnover Wagering</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="BetTurnoverWegring">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-4">
+				<mat-label>Bet Withdrawal Turnover Wagering</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="WithdrawalTurnoverWegering">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-4">
+				<mat-label>Deposit Withdrawal Turnover Wagering</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DepositWithdrawalTurnoverWegering">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Daily Deposit Amount</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DailyDepositAmount">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Weekly Deposit Amount</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="WeeklyDepositAmount">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Monthly Deposit Amount</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="MonthlyDepositAmount">
+				</mat-form-field>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div>
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

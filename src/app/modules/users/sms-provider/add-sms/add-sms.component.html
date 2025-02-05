@@ -1,0 +1,43 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span> Create New SMS Provider </span>
+	</div>
+	<form [formGroup]="addSms"  (ngSubmit)="onSubmit()">
+		<div class="row admin-add">
+			<div class="col-sm-6">
+				<mat-label>URL</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="URL">
+					<mat-error *ngIf="addSms.controls['URL'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>SMS Limit</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="SMSLimit" type="number">
+					<mat-error *ngIf="addSms.controls['SMSLimit'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Priority</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Priority" type="number">
+					<mat-error *ngIf="addSms.controls['Priority'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Description</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<textarea matInput formControlName="Description"></textarea>
+					<mat-error *ngIf="addSms.controls['Description'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div>
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

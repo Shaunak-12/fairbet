@@ -1,0 +1,26 @@
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <ng-container *ngFor="let cards of cardData;index as cIndex">
+          <div class="col-lg-3 col-6" style="padding: 0;">
+            <div class="small-box bg-white" class="{{((cIndex+1)%4)==0?'':'mr-rightrem'}}">
+              <i-feather [name]="cards.feather" id="floating-icon" [ngStyle]="{ 'color': cards.color }" style="float: right;"></i-feather>
+              <div class="inner">
+                <ng-container *ngIf="!cards.btnDownload; else DownloadCard">
+                  <p class="{{!cards.btnDownload?'':'hover-pointer'}}">{{cards.name}}</p>
+                </ng-container>
+                <ng-template #DownloadCard>
+                  <p (click)="cardClicked(cards.name,cIndex)" class="{{!cards.btnDownload?'':'hover-pointer'}}">{{cards.name}}&nbsp;
+                    <i-feather *ngIf="!(cards.btnLoader)" name="download" class="downloadBtn"></i-feather>
+                    <i *ngIf="cards.btnLoader" class="fa fa-sync fa-spin"></i>
+                  </p>
+                </ng-template>
+                <h5 *ngIf="DataLoader" class="skelder" style="width: 6rem;">&nbsp;</h5>
+                <h5 *ngIf="!DataLoader" style="color:#495057;font-weight: bold;">{{cards.value}}</h5>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+</section>

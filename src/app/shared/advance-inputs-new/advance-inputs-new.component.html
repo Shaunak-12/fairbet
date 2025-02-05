@@ -1,0 +1,61 @@
+<form [formGroup]="formGroup">
+    <div style="display: flex; align-items: center;">
+      <ng-container *ngIf="question.type == 'dropdown'">
+        <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+          <mat-select formControlName="value">
+            <ng-container *ngIf="question.options">
+              <ng-container *ngFor="let option of question.options">
+                <mat-option [value]="option.val">{{option.op}}</mat-option>
+              </ng-container>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+      
+      <ng-container *ngIf="question.type == 'input'">
+        <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+          <input matInput formControlName="value" placeholder="{{question.que}}">
+        </mat-form-field>
+      </ng-container>
+      
+      <ng-container *ngIf="question.type == 'date'">
+        <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+          <input matInput readonly [matDatepicker]="picker" [max]="question.maxDate" formControlName="value">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </ng-container>
+      
+      <ng-container *ngIf="question.type == 'daterange'">
+        <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+          <mat-date-range-input [rangePicker]="picker" [max]="question.maxDate">
+            <input matStartDate formControlName="value1">
+            <input matEndDate formControlName="value2">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </ng-container>
+      
+      <!-- org code -->
+      <!-- <ng-container *ngIf="question.subque.length>=1">
+        <ng-container formArrayName="subque" *ngIf="formGroup.controls.value.value">
+          <ng-container *ngFor="let subQuestion of question.subque; let i = index" [formGroupName]="i">
+            <app-advance-inputs-new *ngIf="formGroup.get('value').value === subQuestion.showIf" [question]="subQuestion" [formGroup]="subqueArray.at(i)">
+            </app-advance-inputs-new>
+          </ng-container>
+        </ng-container>  
+      </ng-container> -->
+
+      <ng-container *ngIf="question?.subque?.length >= 1">
+        <ng-container formArrayName="subque" *ngIf="formGroup.get('value')?.value">
+          <ng-container *ngFor="let subQuestion of question.subque; let i = index" [formGroupName]="i">
+            <app-advance-inputs-new *ngIf="formGroup.get('value')?.value === subQuestion?.showIf" [question]="subQuestion"
+              [formGroup]="getSubGroupControl(i)">
+            </app-advance-inputs-new>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      
+    </div>
+  </form>  

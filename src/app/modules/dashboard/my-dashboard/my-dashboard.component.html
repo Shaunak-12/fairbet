@@ -1,0 +1,50 @@
+<!-- <div class="container"> -->
+
+  <app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Dashboard'"
+    [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+  <br style="display: block;margin-top: 0.5rem;">
+  <app-card-list [DataLoader]="myDashboardLoading[0]" [cardData]="showTableData()"
+    (onInputChange)="onValueChange($event)"></app-card-list>
+  <br>
+  <div class="card" style="padding: 1rem;margin: 0.5rem;">
+    <app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Overview'"
+      [dynamicForm]="dynamicControls2" (onSubmitForm)="getSearchQuery2($event)"></app-advance-title-head-new>
+    <hr style="margin:1rem 0rem;margin-left: -1rem;margin-right: -1rem;width: calc(100vw+2rem);">
+    <!-- <mat-spinner [hidden]="!myDashboardLoading[1]" style="margin:4rem auto;"></mat-spinner> -->
+    <div class=" m-auto" [hidden]="!myDashboardLoading[1]" class="chart">
+      <div class="d-flex" style="justify-content: center">
+        <div class="skelder p-10 " style="width:7rem; height:1rem; margin-right: 5px;"></div>
+        <div class="skelder p-10 " style="width:7rem; height:1rem; margin-right: 5px; "></div>
+        <div class="skelder p-10" style="width:7rem; height:1rem;  margin-right: 5px;"></div>
+
+      </div>
+      <div class="chart p-10 skelder " style="width:100%; height:520px;margin-top: 10px;">
+        <!-- <canvas  width="800" height="300"></canvas> -->
+      </div>
+    </div>
+    <div [hidden]="myDashboardLoading[1]" class="chart p-10">
+      <canvas id="line_chart" width="800" height="300"></canvas>
+    </div>
+  </div>
+  <div class="card" style="padding: 1rem;margin: 0.5rem;">
+    <app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Player Call Request'"
+      [dynamicForm]="dynamicControls3" (onSubmitForm)="getSearchQuery3($event)"></app-advance-title-head-new>
+    <!-- <hr style="margin:1rem 0rem;margin-left: -1rem;margin-right: -1rem;width: calc(100vw+2rem);"> -->
+    <!-- <mat-spinner [hidden]="!myDashboardLoading[1]" style="margin:4rem auto;"></mat-spinner> -->
+    <!-- <div class=" m-auto" [hidden]="!myDashboardLoading[1]"  class="chart" >
+  <div class="d-flex" style="justify-content: center">
+  <div class="skelder p-10 " style="width:7rem; height:1rem; margin-right: 5px;"></div>
+  <div class="skelder p-10 " style="width:7rem; height:1rem; margin-right: 5px; "></div>
+  <div class="skelder p-10" style="width:7rem; height:1rem;  margin-right: 5px;"></div>
+
+  </div> -->
+
+    <!-- </div> -->
+    <!-- <div [hidden]="myDashboardLoading[1]" class="chart p-10">
+    <canvas id="bar_chart" width="800" height="300"></canvas> -->
+    <!-- <canvas id="bar_chart"></canvas> -->
+    <!-- </div> -->
+    <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns"
+      [TableData]="UserinfoData" (onInputChange)="onValueChange1($event)"></app-advance-table>
+  </div>
+<!-- </div> -->

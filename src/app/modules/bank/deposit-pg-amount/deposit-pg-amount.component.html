@@ -1,0 +1,4 @@
+<app-multi-input-header [titleText]="'Deposit PG Amount'" [showForm]="'true'" btnVal="Search" [dynamicForm]="dynamicControls"  (onSubmitForm)="getSearchQuery()"></app-multi-input-header>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <app-advance-table [DataLoader]="PGCollumnLoading" [TableCollumnData]="PGDataCollumns" [TableData]="PGinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+</div>

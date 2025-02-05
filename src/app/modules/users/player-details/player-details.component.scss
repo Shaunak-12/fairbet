@@ -1,0 +1,65 @@
+.list-group{
+    font-size: 0.8rem;
+}
+:host ::ng-deep .mat-tab-label {
+    min-width: 9.3rem;
+  }
+  
+::ng-deep .mat-tab-label .mat-tab-label-content,::ng-deep .mat-tab-body .mat-tab-body-content {
+    font-family: "BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+    font-size: 0.85rem;
+}
+
+.font8{
+    font-size: 0.8rem;
+}
+
+.font77{
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.crdmid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pritext{
+    color: #6951ce;
+}
+
+.pagerBlock{
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center;
+    min-width: 1.8rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    padding:6px !important;
+    margin-right: 2px;
+  }
+
+ .walTitle{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1c84ee;
+    // border-bottom: 2px solid #1c84ee;
+    line-height: 1rem;
+    width: fit-content;
+    padding: 0.25rem;
+    margin-bottom: 0.4rem;margin-left: 0.6rem;margin-top: 1rem;font-size: 0.9rem;
+    // letter-spacing: 1px;
+  }
+
+ ::ng-deep .copyIcon svg{
+    height: 1rem;
+    width: 1rem;
+    stroke-width: 2px;
+    cursor: pointer;
+  }
+  .player-issue{
+    width: 100%;
+    overflow: auto;
+  }

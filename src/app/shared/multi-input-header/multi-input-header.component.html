@@ -1,0 +1,46 @@
+<div class="container-fluid" style="padding: 0%;">
+    <div class="{{classes}}" style="padding: 0rem 0.5rem 0rem .5rem;">
+      <div class="row">
+        <div class="col-sm-12 multi-input">
+          <span *ngIf="titleText" class="{{!subText?'font-thead':'font-subhead'}}" style="line-height: 3rem;vertical-align: text-top;">{{titleText}}</span>
+          <ng-container *ngIf="showForm">
+  
+            <div style="float: right;">
+              <form [formGroup]="generatedForm">
+                <ng-container *ngIf="showWallets">
+                  <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+                    <mat-select [formControl]="SelectedSiteWal">
+                        <ng-container *ngFor="let option of userWals">
+                          <mat-option value={{option.Id}}>{{option.Name+' - '+option.Code}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container>
+                <ng-container *ngFor="let dControls of dynamicForm;let count = index;">
+                  <ng-container *ngIf="dControls.type=='select'">
+                    <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+                      <mat-label *ngIf="dControls.label">{{dControls.label}}</mat-label>
+                      <mat-select [formControlName]="'C'+count">
+                        <mat-option *ngIf="dControls.default" [value]='dControls.default.value'>{{dControls.default.name}}</mat-option>
+                        <ng-container *ngIf="dControls.options">
+                          <ng-container *ngFor="let options of dControls.options">
+                            <mat-option [value]='options.value'>{{options.name}}</mat-option>
+                          </ng-container>
+                        </ng-container>
+                      </mat-select>
+                    </mat-form-field>
+                  </ng-container>
+                  <ng-container *ngIf="dControls.type=='text'">
+                    <mat-form-field style="margin-right: 1rem;margin-top: 0.6rem;" appearance="outline">
+                      <input matInput [formControlName]="'C'+count" placeholder="{{dControls.label}}">
+                    </mat-form-field>
+                  </ng-container>
+                </ng-container>
+                  <button type="button" class="btn btn-primary font7 mr-toprem" (click)="submitFunction()">{{btnVal}}</button>
+              </form>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>

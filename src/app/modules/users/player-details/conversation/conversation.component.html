@@ -1,0 +1,76 @@
+<div class="container">
+
+    <div class="popupCard"></div>
+    <div class="popupHead">
+        <span>Add Conversation</span>
+        <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    </div>
+    <div class="odwform">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <div class="row admin-add">
+                <div class="col-sm-4">
+                    <mat-label>Request Type</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="RequestType">
+                            <mat-option value="">Select</mat-option>
+                            <mat-option value="whatsapp">whatsapp</mat-option>
+                            <mat-option value="callRequest">Call Request</mat-option>
+                            <mat-option value="telegram">Telegram</mat-option>
+                            <mat-option value="livechat">Live Chat</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Category</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="CategoryId">
+                            <mat-option value="">Select</mat-option>
+                            <ng-container *ngFor="let option of category">
+                                <mat-option [value]="option.CategoryId">{{option.CategoryName}}</mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Sub Category Name</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="SubCategoryName">
+
+                            <mat-option value="">Select</mat-option>
+                            
+                            <ng-container *ngFor="let option of subCategory">
+                                <mat-option [value]="option.SubCategoryName">{{option.SubCategoryName}}</mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Request Status</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="RequestStatus">
+                            <mat-option value="">Select</mat-option>
+                            <mat-option value="0">Open</mat-option>
+                            <mat-option value="1">Close</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-sm-8">
+                    <mat-label>Chat Description</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <input matInput type="text" formControlName="ChatDescription">
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div style="text-align: center;">
+                <!-- <div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div> -->
+                <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close
+                    (click)="onBack()">Cancel</button>
+                <button type="button" class="mbutton btn btn-primary font7" type="submit"
+                    [disabled]="submitDisabled">Submit
+                    <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+            </div>
+        </form>
+    </div>
+</div>

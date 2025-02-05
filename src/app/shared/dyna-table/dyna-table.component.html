@@ -1,0 +1,152 @@
+<ng-container *ngIf="!DataLoader">
+    <div class="card" style="margin-bottom: 0rem;overflow-x: auto;">
+      <table>
+        <thead>
+          <ng-container *ngFor="let TCR of TableCollumnData; index as rowIndex">
+            <tr>
+              <ng-container *ngFor="let TCD of TCR; index as rowHeadIndex">
+                <ng-container *ngIf="TCD.colspan;else normalSpan">
+                  <th class="{{TCD.bg}}" [attr.colspan]="TCD.colspan" >{{TCD.value}}</th>
+                </ng-container>
+                <ng-template #normalSpan>
+                  <ng-container *ngIf="TCD.icon;else noIcon">
+                    <ng-container *ngIf="TCD.icon=='Download'">
+                      <th class="{{TCD.bg}}">
+                        <i class="fa fa-download" (click)="buttonHeaderPressed(rowIndex,rowHeadIndex,TCD.downloadvalue)" title="Click to Download"></i> &nbsp;{{TCD.value}}
+                      </th>
+                    </ng-container>
+                    <ng-container *ngIf="TCD.icon=='Checkbox'">
+                      <th class="{{TCD.bg}} scaleCheck">
+                        <mat-checkbox [(ngModel)]="TCD.value" style="margin-top: 0.25rem;" title="Click to Check all" (change)="checkHeaderChanged(rowIndex,rowHeadIndex,$event.checked)"></mat-checkbox>
+                      </th>
+                    </ng-container>
+                    <ng-container *ngIf="TCD.icon=='Loading'">
+                      <th class="{{TCD.bg}}">
+                        <i class="fa fa-sync fa-spin"></i>&nbsp;{{TCD.value}}
+                      </th>
+                    </ng-container>
+                  </ng-container>
+                  <ng-template #noIcon>
+                    <th class="{{TCD.bg}}">{{TCD.value}}</th>
+                  </ng-template>
+                </ng-template>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let TD of TableData; index as rowIndex">
+            <tr class="mat-row">
+              <ng-container *ngFor="let KV of TD.rInfo; index as cellIndex">
+                <ng-container *ngIf="!KV.icon;else ActiveCell">
+                  <td class="mat-cell {{KV.bg}}">
+                    <ng-container *ngIf="KV.fabefore"><i class="{{KV.faicon}}"></i>&nbsp;</ng-container>
+                    {{KV.value}}
+                    <ng-container *ngIf="KV.faafter"><i class="{{KV.faicon}}"></i>&nbsp;</ng-container>
+                    <ng-container *ngIf="KV.sufText">
+                      <br>
+                      <span class="sufTextTheme lightText" style="letter-spacing: 0.04rem;font-weight: lighter;font-size: 0.6rem;">
+                        {{KV.sufText}}
+                      </span>
+                    </ng-container>
+                    <ng-container *ngIf="KV.sufTextArr">
+                      <ng-container *ngFor="let stA of KV.sufTextArr">
+                        <br>
+                        <span class="sufTextTheme lightText" style="font-weight: lighter;font-size: 0.6rem;line-height: 0.8rem;">{{stA}}</span>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="KV.span_values">
+                      <ng-container *ngFor="let SV of KV.span_values; index as svIndex">
+                        <span *ngIf="SV" class="{{KV.span_classes[svIndex]}}" style="margin-right: 0.5rem;">{{SV}}</span>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="KV.HTMLstyle=='innerHTML'">
+                      <span class="p-null" [innerHTML]="KV.inHTML"></span>
+                    </ng-container>
+                  </td>
+                </ng-container>
+                <ng-template #ActiveCell>
+                  <td class="mat-cell {{KV.bg}}" *ngIf="KV.icon">
+                    <ng-container *ngIf="KV.icon=='View'">
+                      <span class="p-null fonthover"> <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'View')" class="btn btn-primary"><i-feather name="eye"></i-feather></button> </span>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Edit'">
+                      <span class="p-null fonthover"> <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'Edit')" class="btn btn-primary"><i-feather name="edit-2"></i-feather></button> </span>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Image'">
+                      <img class="fonthover" [ngStyle] = "{'height.rem': KV.height,'width.rem': KV.width,'border-radius.rem':KV.rounded}" (click)="buttonPressed(rowIndex,cellIndex,'Image')" src="{{KV.value}}">
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Add'">
+                      <button type="button" (click)="buttonPressed(rowIndex,cellIndex,'Add')" class="btn btn-primary font7 fonthover">Add {{KV.value}}</button>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Download'">
+                      <i class="fa fa-download fonthover" (click)="buttonPressed(rowIndex,cellIndex,KV.downloadvalue)" title="Click to Download"></i> &nbsp;{{KV.value}}
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Delete'">
+                      <span  class="p-null fonthover"> <button type="button" class="btn btn-primary" (click)="buttonPressed(rowIndex,cellIndex,'Delete')"><i-feather name="trash"></i-feather></button> </span>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Toggle'">
+                      <mat-slide-toggle [checked]="(KV.value == 1)||(KV.value == true) ? true : false" (change)="setToggleChange(rowIndex,cellIndex,$event)"></mat-slide-toggle>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Checkbox'">
+                      <div class="scaleCheck"> <mat-checkbox [(ngModel)]="KV.value" color="primary" style="margin-top: 0.25rem;" (change)="setCheckChange(rowIndex,cellIndex,$event.checked)"></mat-checkbox> </div>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='None'">
+                      <button type="button" class="btn btn-primary font7 fonthover" (click)="buttonPressed(rowIndex,cellIndex,KV.value)" style="font-size: 0.75rem;font-weight: 500;">{{KV.value}}</button>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='feather'">
+                      <span  class="p-null fonthover"> <button type="button" class="btn btn-primary" (click)="buttonPressed(rowIndex,cellIndex,KV.iconvalue)"><i-feather [name]="KV.iconvalue"></i-feather></button> </span>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Loading'">
+                      &nbsp;&nbsp;<i class="fa fa-sync fa-spin"></i>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='EditDropdown'">
+                        <app-edit-dropdown [inputArray]="KV.refArray" [searchKey]="KV.sKey" [searchValue]="KV.sValue" [saveLoader]="KV.loader" [returnKey]="KV.value" (onOptionSave)="externalCellAction(rowIndex,cellIndex,$event,'EditDropdown')"></app-edit-dropdown>
+                    </ng-container>
+                    <ng-container *ngIf="KV.icon=='Textarea'">
+                                          <app-edit-textarea [saveLoader]="KV.loader" (outSaveFn)="buttonPressed(rowIndex,cellIndex,'Textarea')" [outSave]="KV.outSave" [inpVal]="KV.value" (onOptionSave)="externalCellAction(rowIndex,cellIndex,$event,'Textarea')"></app-edit-textarea>
+                                      </ng-container>
+                    <ng-container *ngIf="KV.icon=='Multi'">
+                      <ng-container *ngFor="let subKV of KV.value; index as subcellIndex">
+                        <ng-container *ngIf="!subKV.icon;else subActiveCell">
+                          <ng-container *ngIf="subKV.fabefore"><i class="{{subKV.faicon}}"></i>&nbsp;</ng-container>
+                          <span style="cursor: auto !important;">{{subKV.value}}</span>
+                          <ng-container *ngIf="subKV.faafter"><i class="{{subKV.faicon}}"></i>&nbsp;</ng-container>
+                          <span *ngIf="subKV.sufText" class="lightText" style="font-weight: lighter;font-size: 0.5rem;white-space: nowrap;">{{subKV.sufText}}</span>
+                          <ng-container *ngIf="subKV.span_values">
+                            <ng-container *ngFor="let subSV of subKV.span_values; index as subsvIndex">
+                              <span *ngIf="subSV" class="{{subKV.span_classes[subsvIndex]}}" style="margin-right: 0.5rem;">{{subSV}}</span>
+                            </ng-container>
+                          </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="subKV.brLine">
+                          <div style="width: 100%;height: 0.1rem;background: #0e0d0d;margin-top: 0.5rem;margin-bottom: 0.2rem;"></div>
+                        </ng-container>
+                        <ng-template #subActiveCell>
+                          <ng-container *ngIf="subKV.icon=='None'">
+                              <button type="button" class="btn btn-primary font7 fonthover" (click)="buttonPressed(rowIndex,cellIndex,subKV.value)" style="font-size: 0.75rem;font-weight: 500;margin-top: 0.5rem">{{subKV.value}}</button>
+                          </ng-container>
+                          <ng-container *ngIf="subKV.icon=='Anchor'">
+                              <a href="{{subKV.hrefvalue}}">{{subKV.value}}</a>
+                          </ng-container>
+                          <ng-container *ngIf="subKV.icon=='feather_only'">
+                            <span  class="p-null copyIcon fonthover" (click)="buttonPressed(rowIndex,cellIndex,subKV.iconvalue)" > <i-feather [name]="subKV.iconvalue" [ngStyle] = "{'color': subKV.color}"></i-feather> </span>
+                          </ng-container>
+                        </ng-template>
+                        &nbsp;
+                      </ng-container>
+                    </ng-container>
+                  </td>
+                </ng-template>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="DataLoader">
+    <mat-spinner *ngIf="!miniLoader" style="left: 40%;margin: 3rem;"></mat-spinner>
+    <mat-spinner *ngIf="miniLoader" [diameter]="50" style="left: 40%;margin: 3rem;"></mat-spinner>
+  </ng-container>

@@ -1,0 +1,12 @@
+<div class="popupCard">
+    <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    <div class="popupHead">
+        <span>Are you sure you want to reset Call of <span style="font-weight: bold;">{{rowData.UserName}}</span></span>
+    </div>
+    <div class="odwform">
+        <div style="text-align: center;">
+            <button type="button" class="mbutton btn btn-primary font7" (click)="onSubmit()" [disabled]="submitDisabled">Reset<i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+            <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close>Cancel</button>
+        </div>
+    </div>
+</div>

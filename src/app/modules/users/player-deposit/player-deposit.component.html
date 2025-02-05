@@ -1,0 +1,5 @@
+<div class="smallicon" style="padding:0rem 0.5rem 0.5rem 0.5rem;" *ngIf="UserinfoData.length>0">
+    <button type="button" class="btn btn-primary font7" style="float: right;"  (click)="exportdata()" [disabled]="apiLoader.pdc_eStatement">Export <i *ngIf="apiLoader.pdc_eStatement" class="fa fa-sync fa-spin"></i></button><br>
+</div><br>
+<app-advance-table [DataLoader]="apiLoader.pdc_list" [miniLoader]='true' [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData"></app-advance-table>
+<app-advance-table-paginator [DataLoader]="apiLoader.pdc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="currentQuery.PageSize" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>

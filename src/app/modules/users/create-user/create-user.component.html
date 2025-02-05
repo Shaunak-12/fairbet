@@ -1,0 +1,73 @@
+<div class="card">
+	<span style="font-weight: 600;font-size: 1.1rem;margin-left: 0rem;margin-top: 0.25rem;margin-bottom: 0.25rem;">Add New User</span>
+	<hr style="margin:1rem 0rem;margin-left: -1rem;margin-right: -1rem;width: calc(100vw+2rem);">
+	<form [formGroup]="adduser" (ngSubmit)="onSubmit()">
+		<div class="row anu-class">
+			<div class="col-sm-3">
+				<mat-label>User Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="UserName">
+					<mat-error *ngIf="adduser.controls['UserName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>First Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="FName">
+					<mat-error *ngIf="adduser.controls['FName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Last Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="LName">
+					<mat-error *ngIf="adduser.controls['LName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Mobile No</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Mobile">
+					<mat-error *ngIf="adduser.controls['Mobile'].hasError('required')">This field is mandatory.</mat-error>
+					<mat-error *ngIf="adduser.controls['Mobile'].hasError('pattern')">Please enter valid Mobile Number.</mat-error>
+					<mat-error *ngIf="adduser.controls['Mobile'].hasError('maxlength')">Please enter maximum 11 digit.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Date of Birth</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput [max]="todayDate" [matDatepicker]="picker" formControlName="DOB">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+					<mat-error *ngIf="adduser.controls['DOB'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-12">
+				<p style="font-size: 0.9rem;">Wallet Type :</p>
+				<ng-container *ngFor="let list of selWal; index as walIndex">
+					<mat-checkbox [(ngModel)]="selWal[walIndex].selected" [name]="selWal[walIndex].Name" [ngModelOptions]="{standalone: true}" style="margin-right: 2rem;">{{list.Name}} {{list.Code}}</mat-checkbox>
+					<!-- <br> -->
+				</ng-container>
+				<!-- <mat-label>Wallet Type</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<mat-select formControlName="walletTypeId">
+						<mat-option value="">Select Wallet Type</mat-option>
+						<mat-option *ngFor="let list of walList" [value]="list.Id">{{list.Name}} {{list.Code}}</mat-option>
+					</mat-select>
+					<mat-error *ngIf="adduser.controls['walletTypeId'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field> -->
+			</div>
+		</div>
+		<div class="row" style="text-align: center;">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-primary font7" type="submit" [disabled]="submitDisabled">Submit <i *ngIf="submitDisabled && !userPass" class="fa fa-sync fa-spin"></i></button>
+			</div>
+			<div class="col-sm-12" *ngIf="userPass">
+				<br>
+				{{userPass}}
+			</div>
+		</div>
+	</form>
+</div>

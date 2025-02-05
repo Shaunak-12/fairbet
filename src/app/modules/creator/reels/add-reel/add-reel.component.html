@@ -1,0 +1,44 @@
+<div class="popupCard">
+    <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    <div class="popupHead">
+        <span> Add Reel </span>
+    </div>
+    <form [formGroup]="reelForm"  (ngSubmit)="onSubmit()">
+        <div class="row admin-add">
+            <div class="col-sm-6">
+                <!-- <mat-label>Page</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select formControlName="DCPageId">
+                        <ng-container *ngFor="let element of PageList">
+                            <mat-option [value]="element.Id">{{element.Name}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error *ngIf="reelForm.controls['DCPageId'].hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field> -->
+                <mat-label>Page</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput readonly [value]="pageName?pageName.Name:''">
+                    <!-- <mat-error *ngIf="reelForm.controls['URL'].hasError('required')">This field is mandatory.</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>URL</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput [formControl]="fullURL">
+                    <mat-error *ngIf="fullURL.hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Reel Code</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="URL" readonly>
+                    <!-- <mat-error *ngIf="reelForm.controls['URL'].hasError('required')">This field is mandatory.</mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">Cancel</button>
+            <button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,79 @@
+.fa-bars {
+    cursor: pointer;
+}
+
+.nav-item {
+    .nav-link {
+        cursor: pointer;
+    }
+}
+
+.nav-item {
+    button.nav-link {
+        outline: none;
+        border: none;
+        background-color: transparent;
+    }
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0rem !important;
+}
+
+.siteForm ::ng-deep .mat-form-field-infix {
+    line-height: 2rem !important;
+    border-top: 0rem !important;
+}
+
+.siteForm mat-form-field {
+    margin-left: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #ffffff66;
+    border-radius: 5px;
+    color: transparent!important;
+    opacity: 0.2!important;
+    font-size: 0.8rem !important;
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: transparent!important;
+}
+
+.siteForm ::ng-deep .mat-select-arrow {
+    color: rgb(255 255 255 / 50%);
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding: 0% !important;
+}
+
+.siteForm ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: #fff !important;
+}
+
+.siteForm ::ng-deep .mat-select-value{    
+    color: white!important;
+}
+
+.siteForm ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #1c84ee;
+    font-size: 0.8rem !important;
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    color: #fff !important;
+    margin: 0 !important;
+    font-size: 0.8rem !important;
+    padding: 0% !important;
+}
+
+.nav-item .siteForm{
+    line-height: 2rem;
+}
+
+.siteForm ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin: 0rem !important;
+}

@@ -1,0 +1,47 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span> Create New Admin </span>
+	</div>
+	<form [formGroup]="adminForm"  (ngSubmit)="onSubmit()">
+		<div class="row admin-add">
+			<div class="col-sm-6">
+				<mat-label>First Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="FName">
+					<mat-error *ngIf="adminForm.controls['FName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Last Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="LName">
+					<mat-error *ngIf="adminForm.controls['LName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Gender</mat-label>
+				<br>
+				<div class="customMat" style="width: 100%;border:1px solid rgba(0, 0, 0, 0.12); border-radius: 0.3rem;margin-top: 0.2rem;height: 2rem;line-height: 2rem;">
+					<mat-radio-group formControlName="Gender">
+						<mat-radio-button style="margin-left: 0.5rem;" value="M">Male</mat-radio-button>
+						<mat-radio-button style="margin-left: 1rem;" value="F">Female</mat-radio-button>
+					</mat-radio-group>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Mobile No</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Mobile">
+					<mat-error *ngIf="adminForm.controls['Mobile'].hasError('required')">This field is mandatory.</mat-error>
+					<mat-error *ngIf="adminForm.controls['Mobile'].hasError('pattern')">Please enter valid Mobile Number.</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div>
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

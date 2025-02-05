@@ -1,0 +1,78 @@
+
+<ng-container *ngIf="posn==''">
+    <div class="container-fluid sm-lht" *ngIf="!DataLoader && rowCount.t>=1">
+      <div style="padding: 0.5rem 0rem 0rem 0rem;">
+        <div class="row adv-pgntr">
+          <div class="col-sm-3 font7">
+            <p style="margin: 0;line-height: 2rem;"> Showing {{rowCount.f}} to {{rowCount.l}} of {{rowCount.t}} entries </p>
+          </div>
+          <div class="{{pageCount.length>1?'col-sm-6':'col-sm-9'}} font7" style="padding-top: 0.25rem;">            
+            <span *ngIf="pagesTotal!=1" class="d-flex text-white {{pageCount.length>1?'center-class':'right-class'}} ">
+              <div class="p-2 bg-white {{pageNo != 1? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(1)">Previous</div>
+              <ng-container *ngFor="let pager of paginatorBlock">
+                <div class="p-2 {{pager != pageNo? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="pagerPressed(pager)">{{pager}}</div>
+              </ng-container>
+              <div class="p-2 bg-white {{pageNo != pagesTotal? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(2)">Next</div>
+            </span>
+          </div>
+          <div *ngIf="pageCount.length>1" class="col-sm-3 font7 .adv-pgntr" style="text-align: right;">
+            <span style="margin-right: 0.5rem;">Items per page: </span>
+            <mat-form-field style="width: 4.5rem;" appearance="outline">
+              <mat-select [(ngModel)]="UserPageCount" (selectionChange)="buttonPressed(UserPageCount)">
+                <ng-container *ngFor="let option of pageCount">
+                  <mat-option [value]="option">{{option}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="posn=='top'">
+    <div class="container-fluid sm-lht" *ngIf="!DataLoader && rowCount.t>=1">
+      <div style="padding: 0rem 0rem 0rem 0rem;">
+        <div class="row adv-pgntr">
+          <div class="col-sm-3 font7">
+            <p style="margin: 0;line-height: 2.5rem;vertical-align: middle;"> Showing {{rowCount.f}} to {{rowCount.l}} of {{rowCount.t}} entries </p>
+          </div>
+          <div class="col-sm-9 font7" style="padding-top: 0.25rem;">            
+            <span *ngIf="pagesTotal!=1 && (rowCount.l-rowCount.f)>10" class="d-flex text-white right-class ">
+              <div class="p-2 bg-white {{pageNo != 1? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(1)">Previous</div>
+              <ng-container *ngFor="let pager of paginatorBlock">
+                <div class="p-2 {{pager != pageNo? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="pagerPressed(pager)">{{pager}}</div>
+              </ng-container>
+              <div class="p-2 bg-white {{pageNo != pagesTotal? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(2)">Next</div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="posn=='bottom'">
+    <div class="container-fluid sm-lht" *ngIf="!DataLoader && rowCount.t>=1">
+      <div style="padding: 0.5rem 0rem 0rem 0rem;">
+        <div class="row adv-pgntr">
+          <div *ngIf="pageCount.length>1" class="col-sm-3 font7 .adv-pgntr">
+            <span style="margin-right: 0.5rem;">Items per page: </span>
+            <mat-form-field style="width: 4.5rem;" appearance="outline">
+              <mat-select [(ngModel)]="UserPageCount" (selectionChange)="buttonPressed(UserPageCount)">
+                <ng-container *ngFor="let option of pageCount">
+                  <mat-option [value]="option">{{option}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-9 font7" style="padding-top: 0.25rem;">            
+            <span *ngIf="pagesTotal!=1" class="d-flex text-white right-class ">
+              <div class="p-2 bg-white {{pageNo != 1? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(1)">Previous</div>
+              <ng-container *ngFor="let pager of paginatorBlock">
+                <div class="p-2 {{pager != pageNo? 'bg-white' : 'bg-primary'}} pagerBlock" (click)="pagerPressed(pager)">{{pager}}</div>
+              </ng-container>
+              <div class="p-2 bg-white {{pageNo != pagesTotal? 'pagerBlock':'pagerBlockDisabled'}}" (click)="pnPressed(2)">Next</div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>

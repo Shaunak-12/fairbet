@@ -1,0 +1,16 @@
+.full-height{
+    height: 100vh;
+  }
+  
+  .fade {
+    opacity: 0 !important;
+    transition: opacity 1s ease-in;
+  }
+  
+  .fade.visible {
+    opacity: 1 !important;
+  }
+  
+  .qrCode{
+    margin: 0 auto;
+  }

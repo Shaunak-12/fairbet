@@ -1,0 +1,25 @@
+<ng-container *ngIf="isExpandable; else notExpandable">
+    <a  (click)="handleMainMenuAction()" class="nav-link" [ngClass]="{active: isMainActive || isOneOfChildrenActive}">
+        <i-feather class="nav-icon" [name]="menuItem.Icon"></i-feather>
+        <p>{{ menuItem.MenuName }}
+            <i *ngIf="menuItem.ChildMenu.length > 0" class="right fas fa-angle-right" [@rotate]="isMenuExtended"></i>
+        </p>
+    </a>
+    </ng-container>
+    <ng-template #notExpandable>
+        <a [routerLink]="menuItem.Link" class="nav-link" [ngClass]="{active: isMainActive || isOneOfChildrenActive}">
+            <i-feather class="nav-icon" [name]="menuItem.Icon"></i-feather>
+            <p>{{ menuItem.MenuName }}
+                <i *ngIf="menuItem.ChildMenu.length > 0" class="right fas fa-angle-right" [@rotate]="isMenuExtended"></i>
+            </p>
+        </a>
+    </ng-template>
+    
+    <ul class="nav nav-treeview" *ngFor="let item of menuItem.ChildMenu" [@openClose]="isMenuExtended">
+        <li class="nav-item">
+            <a [routerLink]="item.Link" [routerLinkActive]="'active'" class="nav-link" style="line-height: 1rem;">
+                <i-feather class="nav-icon" [name]="'minus'"></i-feather>
+                <p>{{ item.MenuName }}</p>
+            </a>
+        </li>
+    </ul>

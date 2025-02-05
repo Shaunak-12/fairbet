@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <app-title-header titleText="Bulk Upload Leads"></app-title-header>
+    <div class="card" style="margin:10px;padding:1rem">
+      <div class="row" >
+        <div class="col-lg-8" style="text-align: right;">
+          <input type="file" id="ExcelUpload" style="margin-top: 4rem;">
+          <br>
+          <button type="button" class="btn btn-primary font7" (click)="UploadFile()" style="margin-right: 10rem;margin-top: 4rem;"  title="Click to Upload">Upload <i *ngIf="uploadLoader" class="fa fa-spinner fa-spin"></i></button>
+        </div>
+        <div class="col-lg-4">
+          <a (click)="downloadFile()" style="float: right;">
+            <button type="button" class="btn btn-primary font7" title="Click to Download" ><i class="fa fa-download"></i> Sample Data</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

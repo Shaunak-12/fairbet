@@ -1,0 +1,103 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span>New Deposit Promotion</span>
+	</div>
+
+	<form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
+		<div class="row admin-add">
+			<div class="col-sm-3">
+				<mat-label>Wallet</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<mat-select formControlName="WalletTypeId">
+						<ng-container *ngFor="let option of userWals">
+							<mat-option [value]="option.Id">{{option.Code}}</mat-option>
+						</ng-container>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Deposit Count</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DepositCount">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Minimum Deposit Amount</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="MinimumDepositAmount">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Deposit Amount</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DepositAmount">
+				</mat-form-field>
+			</div>
+               
+			<div class="col-sm-3">
+				<mat-label>Deposit Percentage</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="DepositPercentage">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Cap Limit</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="CapLimit">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Promotion Code</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="text" formControlName="PromotionCode">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Title</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="Title">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Description</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="Description">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Exact Deposit Count</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="ExactDepositCount">
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-label>Wagering</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="Wagering">
+				</mat-form-field>
+			</div>
+			<!-- <div class="col-sm-4">
+				<mat-label>Category</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput type="number" formControlName="Category">
+				</mat-form-field>
+			</div> -->
+            <div class="col-sm-3">
+				<mat-label>Category</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<mat-select formControlName="Category">
+						<ng-container *ngFor="let option of catDrop">
+							<mat-option [value]="option.val">{{option.val}}</mat-option>
+						</ng-container>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<div *ngIf="adminPass" class="font7" style="margin: 1rem;">{{adminPass}}</div>
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

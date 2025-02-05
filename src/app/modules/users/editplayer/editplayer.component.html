@@ -1,0 +1,11 @@
+<app-multi-input-header [showForm]="'true'" btnVal="Search" [titleText]="'Players'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-multi-input-header>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+  <app-advance-table-paginator [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.Pagination" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="pageCount[0]" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+</div>
+<ng-template #EditPlayerDialogOpen>
+  <app-editplayer-details (onSave)="GetAllUsers()" [userData]="udataToView" (onCancel)="closePopup()"></app-editplayer-details>
+</ng-template>
+<ng-template #ResetPasswordDialogOpen>
+  <app-reset-userpassword [userData]="udataToView" (onCancel)="closePopup()"></app-reset-userpassword>
+</ng-template>

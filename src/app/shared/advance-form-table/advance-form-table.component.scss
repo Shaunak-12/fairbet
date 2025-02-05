@@ -1,0 +1,172 @@
+td{
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 0.75rem !important;
+    line-height: 1rem;
+    // font-weight: 500;
+    color: #495057;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  table{
+    background-color: transparent;
+    background: transparent;
+  }
+  
+  td .badge{
+    font-size: 0.8rem !important;
+  }
+  
+  thead tr{
+    background-color: transparent;
+    background: transparent;
+  }
+  
+  tbody td{
+    border: 1px solid rgb(233, 233, 239);
+  }
+  
+  th{
+    border: none;
+    background: transparent;
+    background-color: transparent;
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #495057;
+    font-weight: bold;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  .card{
+    padding: 0.5rem;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .green-bg{
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  
+  .red-bg{
+    background-color: #ffba92;
+    background-image: linear-gradient(62deg, #ffba92 0%, #ffec81 100%);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  
+  .blue-bg{
+    background-color: #9692ff;
+    background-image: linear-gradient(62deg, #ee98ff 0%, #af84ff 100%);
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  
+  .white-bg{
+    background: transparent;
+    background-color: transparent;
+  }
+  
+  .white-drop{
+    border: 1px solid #f4f4f4;
+    background: rgb(255, 255, 255);
+    
+  }
+  
+  .red-drop{
+    border: 1px solid #f4f4f4;
+    background: rgb(255,159,104);
+    
+  }
+  
+  .green-drop{
+    border: 1px solid #f4f4f4;
+    background: #d8f175;
+    
+  }
+  
+  .blue-drop{
+    border: 1px solid #f4f4f4;
+    background: rgb(189,141,255);
+    
+  }
+  
+  .icon-pad{
+    margin-right: 1rem;
+  }
+  
+  .fa, .fonthover{
+    cursor: pointer;
+  }
+  
+  .white-cell{
+    background-color: #fff;
+    background: #fff;
+  }
+  
+  .red-cell{
+    background-color: #ffd9c3;
+    background: #ffd9c3;
+  }
+  
+  .green-cell{
+    background-color: #fdffb5;
+    background: #fdffb5;
+  }
+  
+  .blue-cell{
+    background-color: #e6c3ff;
+    background: #e6c3ff;
+  }
+  
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #89e998;
+  }
+  
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #00cf1f;
+  }
+  
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-ripple .mat-ripple-element {
+    background-color: #00cf1f92;
+  }
+  
+  table > tbody > tr:nth-of-type(odd)>td{
+    background: #f9f9f9 !important;
+  }
+  
+  .scaleCheck ::ng-deep .mat-checkbox .mat-checkbox-frame {
+    transform: scale(1.2) !important;
+  }
+  
+  .scaleCheck ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    transform: scale(1.2) !important;
+    background-color: #1c84ee !important;
+  }
+  
+  .btn ::ng-deep svg{
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  // .mat-cell .btn{
+  //   padding: 0rem 0.25rem !important;
+  // }
+  
+  .mat-date-range-input-inner,::ng-deep .mat-button,::ng-deep .mat-calendar, .mat-option, .mat-select, .mat-input-element{
+    font-family: "BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  }
+  
+  .form-cell ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin-top: 0rem !important;
+    padding: 0rem 0.25rem 0.25rem 0.25rem;
+  }
+  ::ng-deep .mat-form-field-infix {
+    line-height: 2rem;
+    border-top: none !important;
+    border-top-width: 0rem !important;
+    // padding-top: 0.25rem;
+  }

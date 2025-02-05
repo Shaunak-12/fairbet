@@ -1,0 +1,96 @@
+.card {
+    // padding:1rem;
+    margin: 0.5rem;
+  }
+  
+  .font7 {
+    font-size:.9rem;
+    vertical-align:top;
+    margin-top:.45rem;
+    font-weight:500
+  }
+  
+  .anu-class ::ng-deep .mat-form-field-wrapper {
+    margin-bottom:1.25rem!important;
+    padding-bottom:0!important;
+    margin-bottom:0
+  }
+  
+  .anu-class ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding-top:0!important;
+    padding-bottom:0!important
+  }
+  
+  .anu-class .mat-form-field {
+    line-height:2rem;
+    font-size:.8rem
+  }
+  
+  .anu-class ::ng-deep .mat-date-range-input-mirror {
+    min-width: 5rem !important
+  }
+  
+  .anu-class ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top:0!important
+  }
+  
+  .anu-class ::ng-deep .mat-form-field-infix {
+    border-top:0!important
+  }
+  
+  .anu-class ::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+    width:1rem!important;
+    height:1rem!important;
+    vertical-align:middle!important
+  }
+  
+  .anu-title .mat-date-range-input-inner,::ng-deep .mat-button,::ng-deep .mat-calendar,.anu-title .mat-option,.anu-title .mat-select,.anu-title .mat-input-element,.anu-title .mat-calendar {
+    font-family:"BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important
+  }
+  
+  .anu-class ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline,.anu-class ::ng-deep .mat-form-field-appearance-outline .mat-form-field-suffix {
+    top:0!important
+  }
+  
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  
+   ::ng-deep label:not(.form-check-label):not(.custom-file-label) {
+      font-weight: normal !important;
+  }
+  
+  ::ng-deep .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element{
+    background-color: #4ab74e;
+  }
+  
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #4ab74e;
+  }
+  :not(.sd-dark) .fileUpload
+  {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+  }
+  .sd-dark  .fileUpload
+  {
+    width: 100%;
+    border: 1px solid #757a7d;
+  }
+  
+  .font-thead{
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+
+  .mat-expansion-panel-header{
+    font-family: BeVietnamPro;
+  }

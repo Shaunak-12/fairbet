@@ -1,0 +1,125 @@
+.font7{
+	font-size: 0.9rem;
+	vertical-align: top;
+	margin-top: 0.45rem;
+	font-weight: 500;
+}
+
+.mbutton{
+	margin: 0.5rem;
+}
+
+ ::ng-deep .mat-form-field-wrapper{
+	margin-bottom: 1.25rem !important;
+	padding-bottom: 0rem !important;
+}
+
+::ng-deep .mat-form-field{
+	line-height: 1.7rem;
+}
+
+ ::ng-deep .mat-form-field-infix {
+	border-top: 0rem !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+	padding-top: 0.5rem;
+	padding-bottom: 0.3rem;
+}
+
+::ng-deep .mat-form-field-subscript-wrapper{
+	top: calc(100% - 0.25rem);
+}
+
+ ::ng-deep .mat-form-field-wrapper{
+	margin-bottom: 0rem;
+}
+
+ .mat-form-field{
+	font-size: 0.8rem;
+}
+ ::ng-deep .mat-date-range-input-mirror{
+	min-width: 5rem !important;
+}
+
+ ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+	margin-top: 0rem !important;
+}
+
+.popupCard{
+	position: relative;
+	padding: 1rem;
+}
+
+.popupClose{
+	position: absolute;
+	top: 0.5rem;
+	right: 0.8rem;
+	cursor: pointer;
+}
+
+.popupClose i{
+	color: rgba(0,0,0,.7);
+}
+
+.popupHead{
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #bbb;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.font7{
+    font-size: 0.9rem;
+    vertical-align: top;
+    margin-top: 0.45rem;
+    font-weight: 500;
+  }
+  
+  ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  
+  ::ng-deep .mat-form-field{
+    line-height: 2.5rem;
+  }
+  
+  ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem;
+  }
+  
+  .mat-date-range-input-inner,::ng-deep .mat-button,::ng-deep .mat-calendar, .mat-option, .mat-select, .mat-input-element{
+    font-family: "BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  }
+  
+  .mat-form-field{
+    font-size: 0.8rem;
+  }
+  
+  ::ng-deep .mat-date-range-input-mirror{
+    min-width: 4.9rem !important;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin-top: 0rem !important;
+  }
+  ::ng-deep .mat-select-trigger{
+    padding: 0em !important;
+  }

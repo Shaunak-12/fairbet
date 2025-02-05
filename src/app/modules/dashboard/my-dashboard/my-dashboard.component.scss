@@ -1,0 +1,16 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Applying the animation to your elements */
+// .skelder {
+//     animation: fadeIn 1s ease-out forwards;
+// }
+.container{
+    // border: 1px solid red;
+}

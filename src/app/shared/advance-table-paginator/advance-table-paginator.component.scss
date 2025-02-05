@@ -1,0 +1,110 @@
+.adv-pgntr .mat-button, .adv-pgntr .mat-calendar, .adv-pgntr .mat-option, .adv-pgntr .mat-select,.adv-pgntr .mat-input-element{
+    font-family: "BeVietnamPro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  }
+  
+  .adv-pgntr .mat-select{
+    text-align: center;
+  }
+  
+  .adv-pgntr .chevronbtn{
+    line-height: 1.25rem;
+    margin-top: -0.5rem;
+  }
+  
+  /* Chrome, Safari, Edge, Opera */
+  .adv-pgntr input::-webkit-outer-spin-button,
+  .adv-pgntr input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  .adv-pgntr input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  .sm-lht{
+  line-height: 1rem !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-infix {
+    line-height: 2rem;
+    border-top: none !important;
+    border-top-width: 0rem !important;
+    // padding-top: 0.25rem;
+  }
+  
+  .adv-pgntr mat-form-field {
+    margin-top: 0rem;
+  }
+  
+  .font7{
+    font-size: 0.8rem;
+    vertical-align: top;
+    font-weight: 500;
+  }
+  
+  .pagerBlock{
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center;
+    min-width: 1.8rem;
+  }
+  
+  .pagerBlockDisabled{
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    cursor:not-allowed;
+    color: #ccc !important;
+    text-align: center;
+    min-width: 1.8rem;
+  }
+  
+  .center-class{
+    align-items: center;justify-content: center;
+  }
+  .right-class{
+    align-items:end;justify-content:end;
+  }
+  
+  .mbutton{
+    margin: 0.5rem;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0rem !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field{
+    line-height: 2rem;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: 0rem;
+  }
+  
+  .adv-pgntr .mat-form-field{
+    font-size: 0.8rem;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-date-range-input-mirror{
+    min-width: 5rem !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+    margin-top: 0rem !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding: 0% !important;
+  }
+  
+  .adv-pgntr ::ng-deep .mat-form-field-infix {
+    border-top: 0rem !important;
+  }

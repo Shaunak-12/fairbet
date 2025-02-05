@@ -1,0 +1,2 @@
+<app-advance-table [DataLoader]="apiLoader.pgpc_list" [miniLoader]='true' [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData"></app-advance-table>
+<app-advance-table-paginator [DataLoader]="apiLoader.pgpc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="currentQuery.PageSize" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>

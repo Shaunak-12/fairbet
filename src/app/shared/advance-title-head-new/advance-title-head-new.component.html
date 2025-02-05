@@ -1,0 +1,24 @@
+<div class="container-fluid" style="padding: 0%;">
+	<div class="{{classes}}" style="padding: 0rem 0.5rem 0rem .5rem;">
+		<div class="row">
+			<div class="col-sm-12 title-head">
+				<span *ngIf="titleText" class="{{!subText?'font-thead':'font-subhead'}}" style="line-height: 3rem;vertical-align: text-top;">{{titleText}}</span>
+				<ng-container *ngIf="showForm">
+					<div class="{{titleText?'to-right-float':''}}">
+						<form [formGroup]="generatedForm">
+							<div style="display: flex; align-items: center;">
+							<ng-container *ngFor="let question of dynamicForm; let i = index" [formGroupName]="question.que">
+							  <!-- <app-advance-inputs-new [question]="question" [formGroup]="generatedForm.get(question.que)" (submitTrigger)="submitFunction()"></app-advance-inputs-new> -->
+
+                              <app-advance-inputs-new [question]="question" [formGroup]="getFormGroup(generatedForm.get(question.que))" (submitTrigger)="submitFunction()"></app-advance-inputs-new>
+
+							</ng-container>
+							<button type="button" class="btn btn-primary font7 mr-toprem" *ngIf="btnVal" (click)="submitFunction()">{{btnVal}}</button>
+							</div>
+						</form>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+</div>

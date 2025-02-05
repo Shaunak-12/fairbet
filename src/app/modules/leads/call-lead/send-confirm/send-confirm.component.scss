@@ -1,0 +1,81 @@
+.font7{
+	font-size: 0.9rem;
+	vertical-align: top;
+	margin-top: 0.45rem;
+	font-weight: 500;
+}
+
+.mbutton{
+	margin: 0.5rem;
+}
+
+.odwform ::ng-deep .mat-form-field-wrapper{
+	margin-bottom: 1.25rem !important;
+	padding-bottom: 0rem !important;
+}
+
+.odwform ::ng-deep .mat-form-field{
+	line-height: 1.7rem;
+}
+
+.odwform ::ng-deep .mat-form-field-infix {
+	border-top: 0rem !important;
+}
+
+.odwform ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix{
+	padding-top: 0.5rem;
+	padding-bottom: 0.3rem;
+}
+
+.odwform ::ng-deep .mat-form-field-subscript-wrapper{
+	top: calc(100% - 0.25rem);
+}
+
+.odwform  ::ng-deep .mat-form-field-wrapper{
+	margin-bottom: 0rem;
+}
+
+.odwform  .mat-form-field{
+	font-size: 0.8rem;
+}
+.odwform  ::ng-deep .mat-date-range-input-mirror{
+	min-width: 5rem !important;
+}
+
+.odwform  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex{
+	margin-top: 0rem !important;
+}
+
+.popupCard{
+	position: relative;
+	padding: 1rem;
+}
+
+.popupClose{
+	position: absolute;
+	top: 0.5rem;
+	right: 0.8rem;
+	cursor: pointer;
+}
+
+.popupClose i{
+	color: rgba(0,0,0,.7);
+}
+
+.popupHead{
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #bbb;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

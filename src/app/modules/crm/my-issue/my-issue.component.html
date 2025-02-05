@@ -1,0 +1,8 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'My Issue'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+<div class="card" style="margin: 10px;padding: 1rem;margin-top: 1rem;">
+    <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+    <app-advance-table-paginator posn="bottom" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+</div>
+<ng-template #comment>
+    <app-add-comments [issueDetails]="this.issueDetails"></app-add-comments>
+</ng-template>

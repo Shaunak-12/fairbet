@@ -1,0 +1,22 @@
+<div class="popupCard">
+    <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    <div class="popupHead">
+        <span >Complete Call Request of <span style="font-weight: bold;">{{rowData.FName}} {{rowData.LName}} ( {{rowData.UserName}} )</span> </span>
+    </div>
+    <div class="odwform">
+        <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-label>Description</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <textarea matInput formControlName="Description"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled">Complete <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+                <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close>Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

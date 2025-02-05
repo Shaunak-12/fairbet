@@ -1,0 +1,18 @@
+<a [routerLink]="['/']" class="brand-link">
+    <span class="brand-text" style="color: #fff;">ADMIN</span>
+  </a>
+  
+  <div class="sidebar">
+    <nav style="overflow: hidden;margin-top: 1rem;">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <a href="/" class="nav-link bret">
+          <p>{{userCompany}}</p>
+        </a>
+      </ul>
+      
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <app-menu-item *ngFor="let item of menu" [menuItem]="item" ></app-menu-item>
+      </ul>
+    </nav>
+  </div>
+  

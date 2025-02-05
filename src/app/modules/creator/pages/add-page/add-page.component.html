@@ -1,0 +1,63 @@
+<div class="popupCard">
+	<span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+	<div class="popupHead">
+		<span> Add New Page </span>
+	</div>
+	<form [formGroup]="adminForm"  (ngSubmit)="onSubmit()">
+		<div class="row admin-add">
+			<div class="col-sm-6">
+				<mat-label>Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Name">
+					<mat-error *ngIf="adminForm.controls['Name'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+				<mat-label>Mobile No</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Mobile">
+					<mat-error *ngIf="adminForm.controls['Mobile'].hasError('required')">This field is mandatory.</mat-error>
+					<mat-error *ngIf="adminForm.controls['Mobile'].hasError('pattern')">Please enter valid Mobile Number.</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-sm-6">
+				<mat-label>Wesite URL</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="WesiteURL">
+				</mat-form-field>
+			</div>
+            <div class="col-sm-6">
+				<mat-label>Password</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Password">
+					<mat-error *ngIf="adminForm.controls['Password'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+            <div class="col-sm-6">
+				<mat-label>Page Name</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="PageName">
+					<mat-error *ngIf="adminForm.controls['PageName'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-6">
+                <mat-label>URL</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput [formControl]="fullURL">
+                    <mat-error *ngIf="fullURL.hasError('required')">This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+				<mat-label>Handle</mat-label>
+				<mat-form-field style="width: 100%;" appearance="outline">
+					<input matInput formControlName="Handle" readonly>
+					<mat-error *ngIf="adminForm.controls['Handle'].hasError('required')">This field is mandatory.</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<button type="button" class="mbutton btn btn-primary font7" mat-dialog-close (click)="onBack()">{{adminPass.length>0?'Close':'Cancel'}}</button>
+			<button type="button" class="mbutton btn btn-primary font7" type="submit" [disabled]="submitDisabled || adminPass.length>0">Submit <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+		</div>
+	</form>
+</div>

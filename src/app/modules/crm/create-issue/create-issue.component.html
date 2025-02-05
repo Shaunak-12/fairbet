@@ -1,0 +1,123 @@
+
+<div class="card" #scrollTarget>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <span
+                    style="font-weight: bold;font-size: 1.2rem;margin-left: 0rem;margin-top: 0.25rem;margin-bottom: 0.25rem;">{{updateVal?'Update':'Create'}}
+                    Issue</span>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr style="margin:1rem 0rem;margin-left: -1rem;margin-right: -1rem;width: calc(100vw+2rem);margin-top: 0rem;">
+
+        <form [formGroup]="createIssue" (ngSubmit)="onSubmit()">
+            <div class="row anu-class">
+                <input type="hidden" formControlName="id">
+                <div class="col-sm-3">
+                    <mat-label>Title</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <input matInput formControlName="title">
+                        <mat-error *ngIf="createIssue.controls['title'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Priority</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="priority">
+                            <mat-option value="">Select</mat-option>
+                            <mat-option *ngFor="let list of priority" [value]="list.code">{{list.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="createIssue.controls['priority'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Status</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="statusCode">
+                            <mat-option value="">Select</mat-option>
+                            <mat-option *ngFor="let list of status" [value]="list.code">{{list.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="createIssue.controls['statusCode'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Category</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="category">
+                            <mat-option value="">Select</mat-option>
+                            <mat-option *ngFor="let list of category" [value]="list.code">{{list.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="createIssue.controls['category'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Description</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <textarea matInput formControlName="description"></textarea>
+                        <mat-error *ngIf="createIssue.controls['description'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Assign</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select formControlName="assignId">
+                            <mat-option value="0">Select</mat-option>
+                            <mat-option *ngFor="let list of adminAll" [value]="list.id">{{list.fullName}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="createIssue.controls['assign'].hasError('required')">This field is
+                            mandatory.</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Dead line Date</mat-label>
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <input matInput [matDatepicker]="picker" formControlName="deadLineDate" placeholder="MM/DD/YYYY" [min]="minDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="createIssue.controls['deadLineDate'].hasError('required')">This field is
+                            mandatory.</mat-error>
+                    </mat-form-field>
+                </div>
+            <div class="col-sm-3">
+                <label>Upload (optional)</label><br>
+                <!-- <mat-form-field style="width: 100%;" appearance="outline"> -->
+                    <input  formControlName="Files" type="file"  class="fileUpload" multiple (change)="onFileSelected($event)">
+                    <span *ngIf="fileCount > 0">{{ fileCount }} file(s) selected</span>
+                    <!-- <mat-error *ngIf="createIssue.controls['uploadImage'].hasError('required')">This field is
+                        mandatory.</mat-error> -->
+                <!-- </mat-form-field> -->
+            </div>
+        </div>
+            <div class="row" style="text-align: center;">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary font7" type="submit" [disabled]="submitDisabled">{{updateVal?'Update':'Submit'}}
+                        <i *ngIf="submitDisabled" class="fa fa-sync fa-spin"></i></button>
+                </div>
+            </div>
+        </form>
+
+    </mat-expansion-panel>
+</div>
+<ng-container *ngIf="priority && priority.length>0 && adminAll.length > 0 && adminAll">
+    <br>
+    <!-- <span class="font-thead" style="margin: 0.6rem;">Issue List</span> -->
+    <app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Issue List'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+    <div class="card" style="margin: 10px;padding: 1rem;margin-top: 1rem;">
+        <app-advance-table-paginator posn="top" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+        <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="UserinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+        <app-advance-table-paginator posn="bottom" [DataLoader]="UserCollumnLoading" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+    </div>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-spinner *ngIf="loading" style="left: 40%;margin: 3rem;"></mat-spinner>
+  </ng-container>
+  <ng-template #comment>
+    <app-add-comments [issueDetails]="this.issueDetails"></app-add-comments>
+</ng-template>

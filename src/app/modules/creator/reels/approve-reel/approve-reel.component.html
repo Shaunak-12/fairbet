@@ -1,0 +1,24 @@
+<h5 style="text-align: center;">{{AcceptRejectVar=='A'?'Approve':'Reject'}} Reel {{pageData.URL}} of {{pageData.Handle}}</h5>
+
+<ng-container *ngIf="AcceptRejectVar=='A'">
+    <!-- Are you sure you want to Approve ? -->
+</ng-container>
+
+<ng-container *ngIf="AcceptRejectVar=='R'">
+    <mat-label>Description</mat-label>
+    <div class="form-cell">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <textarea matInput [formControl]="Description"></textarea>
+        </mat-form-field>
+    </div>
+</ng-container>
+
+<div class="row">
+    <div class="col-sm-4" style="text-align: left;">
+        <button type="button" class="btn btn-primary font7"  mat-dialog-close>Cancel</button>
+    </div>
+    <div class="col-sm-8" style="text-align:right;">
+        <button *ngIf="AcceptRejectVar=='A'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Approve</button>
+        <button *ngIf="AcceptRejectVar=='R'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Reject  <i *ngIf="approveDisabled" class="fa fa-sync fa-spin"></i></button>
+    </div>
+</div>

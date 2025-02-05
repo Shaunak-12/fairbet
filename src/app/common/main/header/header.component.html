@@ -1,0 +1,44 @@
+<ul class="navbar-nav">
+	<li class="nav-item">
+		<a class="nav-link" (click)="onToggleMenuSidebar()" role="button"><i class="fas fa-bars"></i></a>
+	</li>
+	<li class="nav-item siteForm">
+		<ng-container *ngIf="userSites.length>1">
+			<mat-form-field appearance="outline">
+				<mat-select [formControl]="SelectedSite">
+					<ng-container *ngFor="let option of userSites">
+						<mat-option [value]="option.Code">{{option.Name}}</mat-option>
+					</ng-container>
+				</mat-select>
+			</mat-form-field>
+		</ng-container>
+		<ng-container *ngIf="userSites.length==1">
+			<span class="nav-link">{{userSites[0].Name}}</span>
+		</ng-container>
+	</li>
+</ul>
+
+<ul class="navbar-nav ml-auto">
+	<!-- <li class="nav-item d-none d-sm-inline-block">
+		<a id="belloff" [routerLink]="" class="nav-link" style="padding-top: 4px;line-height: 2rem;">
+			<i-feather name="bell" style="width: 1.4rem;height: 1.4rem;"></i-feather>
+		</a>
+		<a id="bell" [routerLink]="" class="nav-link" style="padding-top: 4px;line-height: 2rem;">
+			<i-feather name="bell-off" style="width: 1.4rem;height: 1.4rem;"></i-feather>
+		</a>
+	</li> -->
+	<li class="nav-item d-none d-sm-inline-block">
+		<a id="sunLight" [routerLink]="" (click)="switchMode('')" class="nav-link" style="padding-top: 4px;line-height: 2rem;">
+			<i-feather name="sun" style="width: 1.4rem;height: 1.4rem;"></i-feather>
+		</a>
+		<a id="moonDark" [routerLink]="" (click)="switchMode('sd-dark')" class="nav-link" style="padding-top: 4px;line-height: 2rem;">
+			<i-feather name="moon" style="width: 1.4rem;height: 1.4rem;"></i-feather>
+		</a>
+	</li>
+	<li class="nav-item d-none d-sm-inline-block">
+		<a [routerLink]="['/change-password']" class="nav-link" style="line-height: 2rem;">Change Password</a>
+	</li>
+	<li class="nav-item d-none d-sm-inline-block">
+		<span class="nav-link" (click)="logout()" style="line-height: 2rem;">Sign Out</span>
+	</li>
+</ul>

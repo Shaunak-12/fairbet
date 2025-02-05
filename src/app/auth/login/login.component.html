@@ -1,0 +1,52 @@
+<div class="bg-white full-height">
+    <div class="card-body">
+        <div *ngIf="!qrCodeVisible" style="text-align: center;margin-top: 3rem;margin-bottom: 2.5rem;">
+            <p style="font-weight: 500;">{{siteUrl}}</p>
+        </div>
+        <p *ngIf="!qrCodeVisible" class="login-box-msg">Welcome Back !</p>
+        <p class="login-box-msg-thin">Sign in to continue</p>
+        <form [formGroup]="loginForm" (ngSubmit)="loginbyOTP()">
+            <div class="input-group input-border mb-3">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <i-feather name="users"></i-feather>
+                    </div>
+                </div>
+                <input formControlName="email" type="email" class="form-control" placeholder="Email" />
+            </div>
+            <div class="{{showOTPForm? 'fade visible' : 'fade'}}">
+                <span [hidden]="!showOTPForm">
+                    <div class="input-group input-border mb-3">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i-feather name="lock"></i-feather>
+                            </div>
+                        </div>
+                        <input formControlName="password" type="{{passwordType}}" class="form-control"
+                            placeholder="Password" />
+                        <div class="input-group-append" style="cursor: pointer;" (click)="togglePassVisible()">
+                            <div class="input-group-text">
+                                <i-feather [name]="eyeType"></i-feather>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="qrCodeVisible" class="input-group input-border mb-3" style="text-align: center;">
+                        <img src="{{qrImgPath}}" width="60%" class="qrCode">
+                        <span style="font-size: 0.75rem;">{{qrMsg}}</span>
+                    </div>
+                    <div class="input-group input-border mb-3">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i-feather name="shield"></i-feather>
+                            </div>
+                        </div>
+                        <input formControlName="otpnumber" class="form-control" placeholder="OTP" />
+                    </div>
+                </span>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit" value="submit"
+                [disabled]="isAuthLoading||!loginForm.get('email')?.value">{{showOTPForm? 'Log In' : 'Submit'}}&nbsp;<i
+                    *ngIf="isAuthLoading" class="fa fa-sync fa-spin"></i></button>
+        </form>
+    </div>
+</div>

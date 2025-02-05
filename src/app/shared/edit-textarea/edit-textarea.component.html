@@ -1,0 +1,14 @@
+<span (click)="switchSelect()" *ngIf="!opVisible&&!outSave">{{valSelect}}&nbsp;&nbsp;<i-feather name="edit" class="sclass"></i-feather></span>
+<span *ngIf="opVisible||outSave">
+  <mat-form-field class="edit-drop" style="width:100%;margin-bottom: 0.5rem;" appearance="outline">
+        <textarea matInput [formControl]="userVal" [readonly]="saveLoader" placeholder="Description.."></textarea>
+        <mat-error *ngIf="userVal.hasError('required')">This field is mandatory.</mat-error>
+  </mat-form-field>
+<ng-container *ngIf="!outSave">
+  <div style="text-align: center;">
+    <span class="p-null"><button type="button" class="btn btn-primary" (click)="saveSelect()" [disabled]="saveLoader"><i-feather name="save"></i-feather><i *ngIf="saveLoader" class="fa fa-sync fa-spin" style="margin-left: 0.25rem;"></i></button></span>
+    &nbsp;&nbsp;
+    <span class="p-null"><button type="button" class="btn btn-primary" (click)="switchSelect()" [disabled]="saveLoader"><i-feather name="rotate-ccw"></i-feather></button></span>
+  </div>
+</ng-container>
+</span>

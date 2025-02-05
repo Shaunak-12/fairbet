@@ -1,0 +1,45 @@
+<div class="container">
+
+<h5 style="text-align: center;">{{AcceptRejectVar=='A'?'Approve':'Reject'}} Withdraw Of <span style="font-weight: bold;">{{userData.AccountHolderName}}&nbsp; ({{userData.AccountNumber}})</span></h5>
+
+<ng-container *ngIf="AcceptRejectVar=='A'">
+   
+    <mat-tab-group>
+        <mat-tab label="Payconnect"  style="padding: 1rem;">
+            <button type="button" class="btn btn-primary btn-block font7" style="margin: 1rem 0;" (click)="onTransfer()" [disabled]="trxdisabled">Transfer  <i *ngIf="trxdisabled" class="fa fa-sync fa-spin"></i></button>
+        </mat-tab>
+    </mat-tab-group>
+    <mat-label>UTR</mat-label>
+    <div class="form-cell">
+    <mat-form-field style="width: 100%; " appearance="outline" class="utrtext">
+        <input matInput [formControl]="UTRNumber" >
+    </mat-form-field>
+</div>
+    <mat-label>Description (optional)</mat-label>
+    <div class="form-cell">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <textarea matInput [formControl]="Description"></textarea>
+        </mat-form-field>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="AcceptRejectVar=='R'">
+    <mat-label>Description</mat-label>
+    <div class="form-cell">
+        <mat-form-field style="width: 100%;" appearance="outline">
+            <textarea matInput [formControl]="Description"></textarea>
+        </mat-form-field>
+    </div>
+</ng-container>
+
+<div class="row">
+    <div class="col-sm-4" style="text-align: left;">
+        <button type="button" class="btn btn-primary font7"  mat-dialog-close>Cancel</button>
+    </div>
+    <div class="col-sm-8" style="text-align:right;">
+        <button *ngIf="AcceptRejectVar=='A'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Approve <b> Using Payconnect </b> <i *ngIf="approveDisabled" class="fa fa-sync fa-spin"></i></button>
+        <button *ngIf="AcceptRejectVar=='R'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Reject  <i *ngIf="approveDisabled" class="fa fa-sync fa-spin"></i></button>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,10 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Player Issue'" [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <app-advance-table-paginator posn="top" [DataLoader]="apiLoader.crc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+  <app-advance-table [DataLoader]="apiLoader.crc_list" [rowCount]="rowCount" [TableCollumnData]="UserDataCollumns" [TableData]="CallRequestinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+  <app-advance-table-paginator posn="bottom" [DataLoader]="apiLoader.crc_list" [paginatorBlock]="paginatorBlock" [pageNo]="currentQuery.PageNo" [rowCount]="rowCount" [pageCount]="pageCount" [selectedPageCount]="currentQuery.PageSize" [pagesTotal]="pagesTotal" (onPaginatorChange)="onPaginatorChange($event)"></app-advance-table-paginator>
+</div>
+<ng-template #changeCallbackIssue>
+  <!-- <app-call-request-complete [rowData]="udataToView" (onSave)="onSavePopup()"></app-call-request-complete> -->
+   <app-change-status [userData]="udataToView" (onSave)="onSavePopup()"></app-change-status>
+</ng-template>

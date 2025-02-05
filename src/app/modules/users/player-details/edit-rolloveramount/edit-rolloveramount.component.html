@@ -1,0 +1,73 @@
+<div class="popupCard">
+    <span class="popupClose" mat-dialog-close><i class="fa fa-times"></i></span>
+    <div class="popupHead">
+        <span> Update RollOver Amount</span>
+    </div>
+    <form [formGroup]="rolleditform" (ngSubmit)="onSubmit()">
+        <div class="row admin-add">
+            <div class="col-sm-6">
+                <mat-label>Normal Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="NormalRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['NormalRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Slots Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="SlotsRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['SlotsRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Sports Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="SportsRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['SportsRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Crash Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="CrashRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['CrashRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Table Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="TableRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['TableRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Fishing Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="FishingRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['FishingRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Live Rollover Amount</mat-label>
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <input matInput formControlName="LiveRolloverAmount" type="number">
+                    <mat-error *ngIf="rolleditform.controls['LiveRolloverAmount'].hasError('required')">This field is
+                        mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" class="mbutton btn btn-primary font7" mat-dialog-close
+                (click)="onBack()">{{rollPass.length>0?'Close':'Cancel'}}</button>
+            <button type="button" class="mbutton btn btn-primary font7" type="submit"
+                [disabled]="submitDisabled || rollPass.length>0">Submit <i *ngIf="submitDisabled"
+                    class="fa fa-sync fa-spin"></i></button>
+        </div>
+    </form>
+</div>

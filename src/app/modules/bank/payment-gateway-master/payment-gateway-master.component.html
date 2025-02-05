@@ -1,0 +1,4 @@
+<app-multi-input-header [titleText]="'Payment Gateway'" [showForm]="'true'" btnVal="Search" (onSubmitForm)="getSearchQuery()"></app-multi-input-header>
+<div class="card" style="margin: 10px;padding: 1rem;">
+  <app-advance-table [DataLoader]="PGCollumnLoading" [TableCollumnData]="PGDataCollumns" [TableData]="PGinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+</div>

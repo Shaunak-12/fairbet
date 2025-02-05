@@ -1,0 +1,33 @@
+.sclass, span .sclass i-feather {
+    height: 0.8rem;
+    width: 0.8rem;
+  }
+  
+  i-feather {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  span {
+    font-weight: 500;
+  }
+  
+  .edit-drop ::ng-deep {
+    .mat-form-field-underline {
+      display: none;
+    }
+  
+    .mat-form-field {
+      border: none;
+    }
+  
+    .mat-form-field-infix {
+      line-height: 1rem;
+      border-top-width: 0.25rem !important;
+    }
+  
+    .mat-form-field-wrapper {
+      padding-bottom: 0rem;
+    }
+  }
+  
