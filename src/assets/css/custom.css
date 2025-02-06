@@ -231,6 +231,16 @@
     animation: shimmereffect 1s ease infinite;
 }
 
+
+
+
+.sd-dark .mdc-notched-outline {
+    color: #eee !important;
+    /* background-color: #27313a !important; */
+}
+
+
+
 .sd-dark .mat-form-field-appearance-outline .mat-form-field-outline-start,
 .sd-dark .mat-form-field-appearance-outline .mat-form-field-outline-end{
     border-color: #757a7d !important;
@@ -240,6 +250,93 @@
     color: #eee !important;
     background-color: #27313a !important;
 }
+
+
+/* .sd-dark .mat-mdc-text-field-wrapper {
+    color: #eee !important;
+    background-color: #27313a !important; 
+}
+
+.sd-dark .mat-mdc-form-field {
+    --mdc-filled-text-field-container-color: #27313a !important;
+    --mdc-filled-text-field-input-text-color: #eee !important;
+    
+} */
+
+
+/* Apply styles to the outer container */
+.sd-dark .mat-mdc-form-field {
+    --mdc-filled-text-field-container-color: #27313a !important; /* Background inside the field */
+    --mdc-filled-text-field-input-text-color: rgb(238, 238, 238) !important; /* Text color */
+    --mdc-filled-text-field-label-text-color: rgb(238, 238, 238) !important; /* Label color */
+    --mdc-filled-text-field-focus-label-text-color: rgb(238, 238, 238) !important; /* Focused label color */
+    --mdc-filled-text-field-caret-color: rgb(238, 238, 238) !important; /* Cursor color */
+    --mdc-filled-text-field-placeholder-text-color: rgb(238, 238, 238) !important; /* Placeholder text color */
+}
+
+/* Apply styles inside the field */
+.sd-dark .mat-mdc-text-field-wrapper {
+    /* background-color: #27313a !important; */
+}
+
+/* Target the input text inside the field */
+.sd-dark .mat-mdc-input-element {
+    color: rgb(238, 238, 238) !important;
+    /* background-color: #27313a !important; */
+    /* border: 1px solid gainsboro !important; */
+}
+
+/* Change the underline color */
+.sd-dark .mat-mdc-form-field:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+    border-bottom-color:1px solid white !important; /* Underline color */
+}
+
+
+
+
+/* Apply styles to the outer container */
+.sd-dark .mat-mdc-form-field {
+    --mdc-outlined-text-field-outline-color: rgb(117, 122, 125) !important; /* Default outline */
+    --mdc-outlined-text-field-outline-width: 1px !important; /* Outline thickness */
+    --mdc-outlined-text-field-container-color: #27313a !important; /* Background color inside the field */
+    --mdc-outlined-text-field-label-text-color: rgb(238, 238, 238) !important; /* Label color */
+    --mdc-outlined-text-field-focus-outline-color: rgb(117, 122, 125) !important; /* Focused outline color */
+}
+
+
+
+/* Style the outlined form field */
+.sd-dark .mat-mdc-form-field.mat-mdc-form-field-type-mat-input .mdc-notched-outline {
+    /* border-color: gainsboro !important;  */
+    border-color: rgb(117, 122, 125) !important;
+    
+}
+
+/* Style outline when focused */
+.sd-dark .mat-mdc-form-field.mat-mdc-form-field-type-mat-input .mdc-notched-outline--notched {
+    /* border-color: white !important; */
+    border-color: rgb(117, 122, 125) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .sd-dark .mat-select-arrow,
 .sd-dark .mat-button,
