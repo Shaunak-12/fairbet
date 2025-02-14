@@ -19,9 +19,11 @@ import { ClaimbonusComponent } from '@modules/promo/claimbonus/claimbonus.compon
 import { DepositpromoComponent } from '@modules/promo/depositpromo/depositpromo.component';
 import { SpinwheelComponent } from '@modules/promo/spinwheel/spinwheel.component';
 import { NewRegisterListComponent } from '@modules/report/new-register-list/new-register-list.component';
+import { NewUsersComponent } from '@modules/report/new-users/new-users.component';
 import { RegisterListComponent } from '@modules/report/register-list/register-list.component';
 import { UserBonusComponent } from '@modules/report/user-bonus/user-bonus.component';
 import { UserDepositListComponent } from '@modules/report/user-deposit-list/user-deposit-list.component';
+import { TrackingComponent } from '@modules/tracking/tracking.component';
 import { AddAdminComponent } from '@modules/users/add-admin/add-admin.component';
 import { AdminDetailsComponent } from '@modules/users/add-admin/admin-details/admin-details.component';
 import { AddAgentComponent } from '@modules/users/add-agent/add-agent.component';
@@ -236,6 +238,13 @@ export const routes: Routes = [
                 component: UserBonusComponent
             },
 
+              {
+                path: 'report/newregister',
+                canActivate: [RoleauthGuard],
+                canActivateChild: [RoleauthGuard],
+                component: NewUsersComponent
+              },
+
 
 
 
@@ -388,6 +397,13 @@ export const routes: Routes = [
                 // loadChildren: () => import('@modules/leads/leads.module').then(m => m.LeadsModule)
                 component: CallDetailsComponent
                 
+            },
+            {
+                path:'track/tracking',
+                canActivate: [RoleauthGuard],
+                canActivateChild: [RoleauthGuard],
+                // loadChildren: () => import('@modules/tracking/tracking.module').then(m=>m.TrackingModule)
+                component:TrackingComponent
             }
         ]
     },

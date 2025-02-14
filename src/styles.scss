@@ -252,27 +252,6 @@
 
 //   Added by shaunak
 
-
-  // for mat-formfield box 
-  .mdc-notched-outline {
-    display: flex;
-    position: absolute;
-    // top: 0;
-    // right: 0;
-    // left: 0;
-    top: 10px !important;
-    left: 0px;
-    right: 0;
-    bottom: -4px !important;
-    box-sizing: border-box;
-    // width: 100%;
-    // max-width: 100%;
-    height: 58% !important;
-    // text-align: left;
-    pointer-events: none;
-  }
-  
- 
   // for date calendar icon ripple
   // .mat-mdc-icon-button .mat-mdc-button-ripple, .mat-mdc-icon-button .mat-mdc-button-persistent-ripple, .mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
   .mat-mdc-button-persistent-ripple::before {
@@ -503,4 +482,305 @@ html .mat-accent {
   /* --mdc-slider-inactive-track-color: #ff4081; */
   /* --mdc-slider-with-tick-marks-inactive-container-color: #ff4081; */
   /* --mdc-slider-with-tick-marks-active-container-color: white; */
+}
+
+/* for date calendar svg icon */
+.mat-mdc-icon-button img, .mat-mdc-icon-button svg {
+  width: var(--mdc-icon-button-icon-size, 24px);
+  height: var(--mdc-icon-button-icon-size, 24px);
+  vertical-align: baseline;
+  color: grey !important;
+}
+
+
+
+/* for positioning mat-select-panel */
+div.mat-mdc-select-panel {
+  width: 100%;
+  outline: 0;
+  padding: 8px 0;
+  border-radius: 4px !important;
+  box-sizing: border-box;
+  // color: rgb(238, 238, 238) !important;
+  // background-color: rgb(34, 40, 47) !important;
+  position: absolute !important;
+  top: -46px !important;
+  border-radius: 4px;
+}
+
+
+.mat-mdc-option .mdc-list-item__primary-text {
+  color: rgb(7, 3, 3) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) .mdc-list-item__primary-text {
+  // color: rgb(238, 238, 238) !important;
+  color: blue !important;
+}
+
+
+.mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-checked::after, .mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-indeterminate::after {
+  // color: rgb(238, 238, 238) !important;
+  color: blue !important;
+
+}
+
+.sd-dark .mat-mdc-checkbox label {
+  cursor: pointer;
+  color: #eee !important;
+}
+
+.sd-dark .mdc-checkbox__background {
+  display: inline-flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #eee !important;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  will-change: background-color, border-color;
+  transition: background-color 90mscubic-bezier(0.4, 0, 0.6, 1), border-color 90mscubic-bezier(0.4, 0, 0.6, 1);
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  /* border-color: var(--mdc-checkbox-unselected-icon-color, var(--mat-sys-on-surface-variant)); */
+  top: calc((var(--mdc-checkbox-state-layer-size, 40px) - 18px) / 2);
+  left: calc((var(--mdc-checkbox-state-layer-size, 40px) - 18px) / 2);
+}
+
+.sd-dark input::placeholder {
+  color: white !important;
+  opacity: 1;
+  font-size: 13px !important;
+
+}
+input::placeholder {
+  font-size: 13px !important;
+}
+
+// for players add conversation
+.sd-dark .container[_ngcontent-ng-c3321596602] {
+  padding: 20px;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for players add promo
+.sd-dark .container[_ngcontent-ng-c2122130660] {
+  padding: 20px;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for call request reset call
+.sd-dark .popupCard[_ngcontent-ng-c2804620794] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for report new-users complete popup
+.sd-dark .popupCard[_ngcontent-ng-c2725595756] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+
+
+// 
+.sd-dark .popupCard[_ngcontent-ng-c1969277852] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+.sd-dark .popupCard[_ngcontent-ng-c1506741321] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+
+// withdrawal request reject button
+.sd-dark .container[_ngcontent-ng-c714370113] {
+  padding: 20px;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for edit error dialog box
+.sd-dark .popupCard[_ngcontent-ng-c2516244406] {
+  position: relative;
+  padding: 1rem;
+  background-color: rgb(55, 69, 82);
+  color: rgb(238, 238, 238);}
+
+  // for multilanguage dialog box
+.sd-dark .popupCard[_ngcontent-ng-c2767267306] {
+    position: relative;
+    padding: 1rem;
+    background-color: #374552;
+    color: #eee;
+}
+
+// for SMS Service provider edit dialog box
+.sd-dark .popupCard[_ngcontent-ng-c1191112724] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for SMS Service provider add dialog box
+.sd-dark .popupCard[_ngcontent-ng-c455932744] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// Promotion add dialog box
+.sd-dark .popupCard[_ngcontent-ng-c2903024105] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vip template ---> group master add
+.sd-dark .popupCard[_ngcontent-ng-c1952083231] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vip template ---> template master add
+.sd-dark .popupCard[_ngcontent-ng-c2932849210] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vip template ---> level master add
+.sd-dark .popupCard[_ngcontent-ng-c4066945099] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vip template ---> level template add
+.sd-dark .popupCard[_ngcontent-ng-c512815519] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vtp template ---> level template edit
+.sd-dark .popupCard[_ngcontent-ng-c2444301050] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// for vip --->template feature
+.sd-dark .popupCard[_ngcontent-ng-c3949644018] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+// leads ---> myleads
+.sd-dark .popupCard[_ngcontent-ng-c1015703233] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+.sd-dark .popupCard[_ngcontent-ng-c302745570] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+.sd-dark .popupCard[_ngcontent-ng-c217233956] {
+  position: relative;
+  padding: 1rem;
+  background-color: #374552;
+  color: #eee;
+}
+
+
+
+.mat-mdc-select {
+  display: inline-block;
+  width: 100%;
+  outline: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--mat-select-enabled-trigger-text-color, var(--mat-sys-on-surface));
+  font-family: var(--mat-select-trigger-text-font, var(--mat-sys-body-large-font));
+  line-height: var(--mat-select-trigger-text-line-height, var(--mat-sys-body-large-line-height));
+  font-size: 13px !important;
+  font-weight: var(--mat-select-trigger-text-weight, var(--mat-sys-body-large-weight));
+  letter-spacing: var(--mat-select-trigger-text-tracking, var(--mat-sys-body-large-tracking));
+}
+
+ // for mat-formfield box 
+ .mdc-notched-outline {
+  display: flex;
+  position: absolute;
+  // top: 0;
+  // right: 0;
+  // left: 0;
+  top: 10px !important;
+  left: 0px;
+  right: 0;
+  bottom: -4px !important;
+  box-sizing: border-box;
+  // width: 100%;
+  // max-width: 100%;
+  height: 59% !important;
+  // text-align: left;
+  pointer-events: none;
+}
+
+.mat-date-range-input-inner {
+  font-size: 13px !important;
+}
+
+// for date picker DATE
+.sd-dark .mat-mdc-button .mdc-button__label, .mat-mdc-button .mat-icon, .mat-mdc-unelevated-button .mdc-button__label, .mat-mdc-unelevated-button .mat-icon, .mat-mdc-raised-button .mdc-button__label, .mat-mdc-raised-button .mat-icon, .mat-mdc-outlined-button .mdc-button__label, .mat-mdc-outlined-button .mat-icon {
+  z-index: 1;
+  position: relative;
+  color: #eee;
+}
+
+// for date picker DAYS
+.sd-dark .mat-calendar-table-header th {
+  text-align: center;
+  padding: 0 0 8px 0;
+  font-size: var(--mat-datepicker-calendar-header-text-size, var(--mat-sys-title-small-size));
+  font-weight: var(--mat-datepicker-calendar-header-text-weight, var(--mat-sys-title-small-weight));
+  color: #eee;
+
+}
+.sd-dark .mat-mdc-icon-button svg {
+  width: var(--mdc-icon-button-icon-size, 24px);
+  height: var(--mdc-icon-button-icon-size, 24px);
+  vertical-align: baseline;
+  color: #eee !important;
 }

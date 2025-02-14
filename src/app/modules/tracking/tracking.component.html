@@ -1,0 +1,41 @@
+<app-advance-title-head-new [showForm]="'true'" btnVal="Search" [titleText]="'Attendance'"
+    [dynamicForm]="dynamicControls" (onSubmitForm)="getSearchQuery($event)"></app-advance-title-head-new>
+<div class="card" style="padding: 1rem;margin: 0.5rem;">
+    <!-- <div style="margin:1rem;display: flex; gap: 20px; align-items: center;justify-content: center;">  
+            <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('Break')"
+                [disabled]="submitDisabled == 'Break'">Break <i *ngIf="submitDisabled == 'Break'" class="fa fa-sync fa-spin"></i></button>
+        </div> -->
+
+    <div style="margin:1rem;display: flex; gap: 20px; align-items: center;justify-content: center;">
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('Break')"
+            [disabled]="isDisabled('Break')">Break <i *ngIf="submitDisabled == 'Break'"
+                class="fa fa-sync fa-spin"></i></button>
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('BreakBack')"
+            [disabled]="isDisabled('BreakBack')">Break Back <i *ngIf="submitDisabled == 'BreakBack'"
+                class="fa fa-sync fa-spin"></i></button>
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('LunchBreak')"
+            [disabled]="isDisabled('LunchBreak')">Lunch Break <i *ngIf="submitDisabled =='LunchBreak'"
+                class="fa fa-sync fa-spin"></i></button>
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('LunchBack')"
+            [disabled]="isDisabled('LunchBack')">Lunch Back <i *ngIf="submitDisabled=='LunchBack'"
+                class="fa fa-sync fa-spin"></i></button>
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('WeekOff')"
+            [disabled]="isDisabled('WeekOff')">Week off <i *ngIf="submitDisabled=='WeekOff'"
+                class="fa fa-sync fa-spin"></i></button>
+
+        <button type="button" class="btn btn-primary font7 mr-toprem" (click)="track('Absent')"
+            [disabled]="isDisabled('Absent')">Absent <i *ngIf="submitDisabled=='Absent'"
+                class="fa fa-sync fa-spin"></i></button>
+
+    </div>
+</div>
+
+<div class="card" style="padding: 1rem;margin: 0.5rem;">
+    <app-advance-table [DataLoader]="UserCollumnLoading" [rowCount]="rowCount" [TableCollumnData]="UserCollumnHeaders"
+        [TableData]="UserinfoData" (onInputChange)="onValueChange($event)"></app-advance-table>
+</div>

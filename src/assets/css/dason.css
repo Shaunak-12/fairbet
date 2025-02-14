@@ -53004,3 +53004,43 @@ a.text-muted:hover {
     border-color: #4b545c !important;
 }
 /*# sourceMappingURL=adminlte.css.map */
+
+
+
+/* Below css added by shaunak */
+.sd-dark label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 700;
+    color: #eee !important;
+}
+
+html .mat-mdc-radio-button.mat-accent {
+    --mdc-radio-disabled-selected-icon-color: #1c84ee;
+    --mdc-radio-disabled-unselected-icon-color: #1c84ee;
+    --mdc-radio-unselected-hover-icon-color: #1c84ee;
+    --mdc-radio-unselected-focus-icon-color: #1c84ee;
+    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+    --mdc-radio-selected-focus-icon-color: #1c84ee;
+    --mdc-radio-selected-hover-icon-color: #1c84ee;
+    --mdc-radio-selected-icon-color:#1c84ee;
+    --mdc-radio-selected-pressed-icon-color: #1c84ee;
+}
+.sd-dark .mat-mdc-radio-button.mat-accent {
+    --mdc-radio-disabled-selected-icon-color: #1c84ee !important;
+    --mdc-radio-disabled-unselected-icon-color: #1c84ee !important;
+    --mdc-radio-unselected-hover-icon-color: #1c84ee !important;
+    --mdc-radio-unselected-focus-icon-color: #1c84ee !important;
+    --mdc-radio-unselected-icon-color: #eee !important;
+    --mdc-radio-unselected-pressed-icon-color: #eee !important;
+    --mdc-radio-selected-focus-icon-color: #1c84ee !important;
+    --mdc-radio-selected-hover-icon-color: #1c84ee !important;
+    --mdc-radio-selected-icon-color:#1c84ee !important;
+    --mdc-radio-selected-pressed-icon-color: #1c84ee !important;
+}
+html .mat-mdc-radio-button.mat-accent {
+    --mat-radio-ripple-color: #1c84ee !important;
+    --mat-radio-checked-ripple-color: #1c84ee !important;
+    --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+    --mat-radio-label-text-color: rgba(0, 0, 0, 0.87);
+}
+

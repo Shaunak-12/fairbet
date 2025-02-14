@@ -79,7 +79,9 @@ export class WithdrawalRequestComponent implements OnInit, OnDestroy {
   ];
   UserDataCollumns=this.UserCollumnHeaders;
   // currentQuery={"StartDateTime":moment(this.maxDate).format('YYYY-MM-DD HH:MM:SS'),"EndDateTime": moment(this.maxDate).format('YYYY-MM-DD HH:MM:SS'),"Search": "","PageNo": 1,"PageSize": this.pageCount[2],"TransactionStatus":'0',"SiteCode": sessionStorage.getItem('selectedSite'),"WalletTypeId":sessionStorage.getItem('WalChosen'),"PlayerId":""};
+  
   currentQuery={"StartDateTime":moment(this.maxDate).format('YYYY-MM-DD HH:MM:SS'),"EndDateTime": moment(this.maxDate).format('YYYY-MM-DD HH:MM:SS'),"Search": "","PageNo": 1,"PageSize": this.pageCount[2],"TransactionStatus":'0',"SiteCode": sessionStorage.getItem('selectedSite'),"WalletTypeId":Number(sessionStorage.getItem('WalChosen')),"PlayerId":""};
+  
   constructor(private apiservice: ApiService, private utilities: CommonFunctionService,private dialog: MatDialog) { }
   
   ngOnInit(): void {
