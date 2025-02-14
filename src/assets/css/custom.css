@@ -93,8 +93,9 @@
 
     .btn {
         font-size: 0.6rem;
-        height: 35px;
-        width: 75px;
+        /* height: 35px;
+        width: 75px; */
+        /* border: 2px solid red; */
     }
 
     /* .brandlink {
