@@ -50,7 +50,7 @@ export class TrackingComponent implements OnInit, OnDestroy {
     ];
   AllUserinfo: any[] = [];
   UserinfoData: { value: any; bg: string; }[][] = [];
-  rowCount: any= { f: 0, l: 0, t: 0 };
+  rowCount: any = { f: 0, l: 0, t: 0 };
   pageCount = [10, 50, 100, 500, 1000];
   pagesTotal = 1;
   paginatorBlock: any = [];
@@ -60,6 +60,8 @@ export class TrackingComponent implements OnInit, OnDestroy {
 
   buttonData: any = {};
   buttonstatusDisabled: any = {};
+
+  isCurrentDateSelected: boolean = true;
 
   constructor(private apiservice: ApiService, private utilities: CommonFunctionService, private datePipe: DatePipe) {
     this.currentQuery = { "trackingDate": this.datePipe.transform(this.maxDate, 'YYYY-MM-dd') }
@@ -73,8 +75,18 @@ export class TrackingComponent implements OnInit, OnDestroy {
     });
     this.GetUserDetails();
   }
+  // getSearchQuery(formVal: any) {
+  //   this.currentQuery.trackingDate = this.datePipe.transform(formVal.trackingDate.value, 'YYYY-MM-dd');
+  //   this.GetUserDetails();
+  // }
+
   getSearchQuery(formVal: any) {
-    this.currentQuery.trackingDate = this.datePipe.transform(formVal.trackingDate.value, 'YYYY-MM-dd');
+    const selectedDate = this.datePipe.transform(formVal.trackingDate.value, 'YYYY-MM-dd');
+    const todayDate = this.datePipe.transform(this.maxDate, 'YYYY-MM-dd');
+  
+    this.isCurrentDateSelected = selectedDate === todayDate;
+  
+    this.currentQuery.trackingDate = selectedDate;
     this.GetUserDetails();
   }
   GetButtonStatus() {
@@ -101,6 +113,10 @@ export class TrackingComponent implements OnInit, OnDestroy {
     };
   }
   isDisabled(buttonType: any): boolean {
+    if (!this.isCurrentDateSelected) {
+      return true; // Disable all buttons if date is not today
+    }
+    
     const statusKeyMap: { [key: string]: any } = {
       Break: 'BreakStatus',
       BreakBack: 'BreakBackStatus',
